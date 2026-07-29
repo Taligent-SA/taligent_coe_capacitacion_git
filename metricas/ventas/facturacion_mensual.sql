@@ -9,3 +9,5 @@ SELECT
 FROM ventas.comprobantes
 WHERE anulado = 0
 GROUP BY periodo, unidad_negocio;
+
+-- Nota: 'importe_neto' ya viene sin IVA desde el origen.
