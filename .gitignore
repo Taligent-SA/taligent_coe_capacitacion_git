@@ -1,0 +1,26 @@
+# Credenciales — NUNCA versionar
+.env
+.env.*
+*.pem
+*.key
+credenciales.json
+config/secrets.yml
+
+# Artefactos generados — se regeneran, no se versionan
+/salidas/
+/export/
+*.csv
+*.xlsx
+*.qvd
+*.pbix.bak
+
+# Ruido del sistema operativo y del editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Temporales
+*.tmp
+*.log
