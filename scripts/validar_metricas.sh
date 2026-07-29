@@ -20,7 +20,7 @@ echo "2. Encabezado de metadatos obligatorio"
 prev=$errores
 for f in $(find metricas -name '*.sql' 2>/dev/null); do
   for campo in "-- metrica:" "-- dueño:" "-- descripcion:"; do
-    grep -q "$campo" "$f" || fallo "$f — falta el campo '$campo'"
+    grep -qF -- "$campo" "$f" || fallo "$f — falta el campo '$campo'"
   done
 done
 [ $errores -eq $prev ] && ok "todas las métricas tienen encabezado completo"
