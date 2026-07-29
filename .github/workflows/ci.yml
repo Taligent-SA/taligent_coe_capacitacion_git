@@ -1,0 +1,20 @@
+name: Quality Gate
+
+# Se dispara en cada push a una rama con PR abierto y en cada PR hacia develop o main.
+# La idea: nadie se entera de que rompió algo tres días después. Se entera ahora.
+on:
+  pull_request:
+    branches: [develop, main]
+  push:
+    branches: [develop, main]
+
+jobs:
+  validar:
+    name: Validar catálogo de métricas
+    runs-on: ubuntu-latest
+    steps:
+      - name: Traer el código
+        uses: actions/checkout@v4
+
+      - name: Correr el quality gate
+        run: ./scripts/validar_metricas.sh
