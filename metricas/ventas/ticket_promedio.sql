@@ -7,4 +7,5 @@ SELECT
     SUM(importe_neto) / COUNT(DISTINCT comprobante) AS ticket_promedio
 FROM ventas.comprobantes
 WHERE anulado = 0
+  AND periodo >= '202601'
 GROUP BY periodo;
