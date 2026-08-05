@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.1] — corrección del ejercicio 2 y publicación web
+
+### Corregido
+- El ejercicio 2 de la clase 1 describía el grafo del repositorio como estaba al
+  escribir el material: *"tres features, una versión publicada y un hotfix"*.
+  Después entraron el material de dictado y la release 1.1.0, así que ya no
+  coincidía con lo que ve quien corre `git log --oneline --graph --all`.
+  Ahora describe el grafo real y, de paso, convierte el ejercicio en una
+  verificación de la regla de los dos merges.
+
+### Agregado
+- `docs/.nojekyll`, para que GitHub Pages sirva los HTML de las clases tal cual,
+  sin procesarlos con Jekyll.
+
 ## [1.1.0] — material de dictado
 
 ### Agregado
