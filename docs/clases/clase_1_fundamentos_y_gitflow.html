@@ -372,7 +372,8 @@ git checkout -b feature/tu-nombre-cantidad-clientes</pre>
   <div class="kicker">Ejercicio 2 y 3 · 30 minutos</div>
   <h2>Recorrer el historial y abrir un PR</h2>
 <pre>git log --oneline --graph --all | head -30</pre>
-  <p>Ese dibujo es GitFlow, ya aplicado: <strong>tres features</strong> que entraron, <strong>una versión publicada</strong> y <strong>un hotfix</strong> que salió a corregir producción.</p>
+  <p>Ese dibujo es GitFlow, ya aplicado: <strong>cuatro features</strong> que entraron, <strong>dos versiones publicadas</strong> (<code>v1.0.0</code> y <code>v1.1.0</code>) y <strong>un hotfix</strong> que salió a corregir producción.</p>
+  <p><strong>Contá los merges:</strong> los de <code>release</code> son cuatro y los de <code>hotfix</code> dos. Cada uno aparece <em>dos veces</em> porque fue a <code>main</code> y también a <code>develop</code>. La regla del slide anterior, dibujada.</p>
   <p>Después abrís tu Pull Request hacia <code>develop</code> — y revisás el de otro participante. Al menos un comentario.</p>
   <p class="muted">Hay un PR real esperando revisión en el repositorio: el de la tasa de conversión.</p>
   <div class="runfoot">15</div>
