@@ -7,6 +7,8 @@ on:
     branches: [develop, main]
   push:
     branches: [develop, main]
+  # Permite lanzarlo a mano desde la pestaña Actions, para mostrarlo en vivo.
+  workflow_dispatch:
 
 jobs:
   validar:
