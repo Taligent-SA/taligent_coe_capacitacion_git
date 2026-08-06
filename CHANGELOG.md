@@ -1,5 +1,34 @@
 # Changelog
 
+## [1.2.0] — las clases en el brand kit de Taligent
+
+### Cambiado
+- Las dos clases se rehicieron con el brand kit de Taligent (estilo "Agentic Dark"):
+  1920×1080 apaisado, fondo oscuro, Space Grotesk / IBM Plex. Antes eran documentos
+  Letter verticales. **El contenido se portó tal cual** — cambió el formato, no el
+  texto.
+- El material para dictar pasa a ser un `.preview.html`: se abre en cualquier
+  navegador, ocupa la pantalla completa y se navega por teclado. Para compartir
+  pantalla es mejor que un PDF, que arrastra la interfaz del visor.
+- Los fuentes ahora son `clase_N_*.dc.html`, un archivo por clase con los estilos
+  inline. El `.preview.html` se genera desde ahí con `build_preview.py`, que vive
+  en el brand kit.
+- El diagrama de GitFlow de la clase 1 se readaptó a la paleta oscura. La original
+  usaba verde, azul, violeta y rojo, y el brand kit no tiene ni azul ni violeta:
+  quedó `main` verde, `develop` blanco cálido, `feature` naranja, `release` oro y
+  `hotfix` rojo. Los colores significan lo mismo en las dos clases.
+
+### Agregado
+- `scripts/build_pdf.py`, que apila las diapositivas una por página para imprimir
+  en 16:9. El `.preview.html` no sirve para eso porque muestra una por vez.
+
+### Eliminado
+- Los fuentes HTML del formato anterior. Las URLs de GitHub Pages que terminaban en
+  `clases/clase_1_fundamentos_y_gitflow.html` y `clases/clase_2_colaboracion_cicd_y_bi.html`
+  dejan de existir; las nuevas son las mismas con `.preview.html` al final.
+- Los PDF dejaron de versionarse: son artefactos derivados y ahora están en
+  `.gitignore`. Se regeneran con `scripts/build_pdf.py`.
+
 ## [1.1.1] — corrección del ejercicio 2 y publicación web
 
 ### Corregido
