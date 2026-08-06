@@ -1,0 +1,715 @@
+<!--
+  Git, GitFlow y CI/CD — Clase 1 de 2
+  Estilo "Agentic Dark" (brand kit Taligent). 16 slides.
+
+  Generar el visor standalone:
+    python3 <ruta>/brand-kit/build_preview.py docs/clases/clase_1_fundamentos_y_gitflow.dc.html
+
+  Diseño: 1920x1080. Estilos SIEMPRE inline. Sin CSS de clases.
+-->
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>*{margin:0;padding:0;box-sizing:border-box}body{background:#070708}</style>
+</helmet>
+
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js"
+          width="1920" height="1080" hint-size="100%,100%">
+
+  <!-- ============================ 01 · PORTADA ============================ -->
+  <section data-label="Portada"
+           data-speaker-notes="Abrir enmarcando: esto es el piso común antes de aplicarlo a Power BI y Qlik. No se asume experiencia previa con Git.">
+    <div style="position:absolute;inset:0;color:#F4F1EC;font-family:'IBM Plex Sans',sans-serif;overflow:hidden;
+                padding:90px 100px 96px;display:flex;flex-direction:column;justify-content:center;
+                background:radial-gradient(120% 120% at 75% 30%, #2A1606 0%, #100B07 45%, #0A0809 100%);">
+      <div style="position:absolute;top:-120px;right:-80px;width:760px;height:760px;pointer-events:none;
+                  background:radial-gradient(circle, rgba(235,117,34,0.20) 0%, rgba(235,117,34,0) 62%);"></div>
+
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:48px;z-index:1;">
+        <img src="assets/logos/tali-icon.png" style="height:46px;width:auto;" alt=""/>
+        <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:34px;color:#F8F5F0;letter-spacing:-0.02em;">Taligent</span>
+      </div>
+
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.24em;
+                  text-transform:uppercase;color:#F4A91C;font-weight:500;z-index:1;">Capacitación interna · Clase 1 de 2</div>
+
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:96px;line-height:0.98;
+                 letter-spacing:-0.03em;color:#F8F5F0;margin:18px 0 22px;max-width:1300px;z-index:1;">Git, GitFlow y CI/CD</h1>
+
+      <p style="font-size:28px;line-height:1.45;color:#B8B2A8;max-width:980px;z-index:1;">El piso común antes de aplicarlo a Power BI y a Qlik.<br>Dos horas, con las manos en el teclado.</p>
+
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:64px;z-index:1;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:15px;letter-spacing:0.2em;
+                     text-transform:uppercase;color:#8C877E;">Para</span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:32px;color:#F4EEE4;">Consultores de Inteligencia de Negocios</span>
+        <span style="font-size:20px;color:#8C877E;margin-top:4px;">No se asume experiencia previa con Git.</span>
+      </div>
+
+      <img src="assets/logos/tali-icon.png" alt=""
+           style="position:absolute;right:120px;bottom:90px;height:300px;width:auto;opacity:0.95;
+                  filter:drop-shadow(0 28px 70px rgba(235,117,34,0.38));"/>
+    </div>
+  </section>
+
+  <!-- ============================= 02 · AGENDA =========================== -->
+  <section data-label="Agenda"
+           data-speaker-notes="Marcar la regla desde el arranque: si algo no se entiende se pregunta en el momento, porque todo lo que viene después se apoya en lo anterior.">
+    <div style="position:absolute;inset:0;background:#0A0809;color:#F4F1EC;font-family:'IBM Plex Sans',sans-serif;
+                overflow:hidden;padding:90px 100px 96px;display:flex;flex-direction:column;">
+      <div style="position:absolute;top:-180px;right:-120px;width:640px;height:640px;pointer-events:none;
+                  background:radial-gradient(circle, rgba(235,117,34,0.16) 0%, rgba(235,117,34,0) 62%);"></div>
+
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.24em;
+                  text-transform:uppercase;color:#F4A91C;font-weight:500;">Cómo vamos a trabajar</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:60px;line-height:1.04;
+                 letter-spacing:-0.025em;color:#F8F5F0;margin:14px 0 46px;max-width:1250px;">La agenda de hoy</h1>
+
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;">
+        <div style="background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:30px 28px;display:flex;flex-direction:column;gap:14px;">
+          <span style="align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:20px;color:#070708;background:linear-gradient(135deg,#F7B728,#EB7522);border-radius:9px;padding:5px 13px;">Bloque 1</span>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:32px;color:#F4EEE4;">Por qué versionar</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.1em;text-transform:uppercase;color:#8C877E;">Conversación</div>
+        </div>
+        <div style="background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:30px 28px;display:flex;flex-direction:column;gap:14px;">
+          <span style="align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:20px;color:#070708;background:linear-gradient(135deg,#F7B728,#EB7522);border-radius:9px;padding:5px 13px;">Bloque 2</span>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:32px;color:#F4EEE4;">Los conceptos de Git</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.1em;text-transform:uppercase;color:#8C877E;">Teoría + ejercicio 1</div>
+        </div>
+        <div style="background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:30px 28px;display:flex;flex-direction:column;gap:14px;">
+          <span style="align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:20px;color:#070708;background:linear-gradient(135deg,#F7B728,#EB7522);border-radius:9px;padding:5px 13px;">Bloque 3</span>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:32px;color:#F4EEE4;">GitFlow</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.1em;text-transform:uppercase;color:#8C877E;">Teoría + ejercicios 2 y 3</div>
+        </div>
+      </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px;max-width:1400px;">
+        <p style="font-size:26px;line-height:1.45;color:#B8B2A8;"><strong style="color:#F4A91C;">En la clase 2:</strong> colaborar sin pisarse, CI/CD y el puente hacia BI.</p>
+        <p style="font-size:24px;line-height:1.45;color:#8C877E;">Una regla: si algo no se entiende, se pregunta en el momento. Todo lo que viene después se apoya en lo anterior.</p>
+      </div>
+
+      <div style="position:absolute;left:100px;bottom:48px;display:flex;align-items:center;gap:12px;opacity:.5;">
+        <img src="assets/logos/tali-icon.png" style="height:22px;width:auto;" alt=""/>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#99948B;">Taligent · Git, GitFlow y CI/CD · Clase 1</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== 03 · LA CARPETA ============================= -->
+  <section data-label="Esta carpeta te resulta familiar"
+           data-speaker-notes="Dejar que se rían y que la reconozcan. El punto no es burlarse: es que ya están versionando, sólo que a mano.">
+    <div style="position:absolute;inset:0;background:#0A0809;color:#F4F1EC;font-family:'IBM Plex Sans',sans-serif;
+                overflow:hidden;padding:90px 100px 96px;display:flex;flex-direction:column;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.24em;
+                  text-transform:uppercase;color:#F4A91C;font-weight:500;">Bloque 1 · Por qué versionar</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:60px;line-height:1.04;
+                 letter-spacing:-0.025em;color:#F8F5F0;margin:14px 0 40px;max-width:1250px;">Esta carpeta te resulta familiar</h1>
+
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+      <div style="background:#1A1715;border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:36px 42px;
+                  font-family:'IBM Plex Mono',monospace;font-size:27px;line-height:1.95;color:#F1E9DD;">
+        Reporte_Ventas.pbix<br>
+        Reporte_Ventas_v2.pbix<br>
+        Reporte_Ventas_v2_FINAL.pbix<br>
+        Reporte_Ventas_v2_FINAL_correg.pbix<br>
+        Reporte_Ventas_v2_FINAL_correg_JUAN.pbix<br>
+        Reporte_Ventas_v2_FINAL_ok_ESTE_SI.pbix<br>
+        Reporte_Ventas_2026-03-14_backup.pbix
+      </div>
+      </div>
+
+      <p style="font-size:28px;line-height:1.45;color:#B8B2A8;max-width:1450px;">
+        No es desprolijidad. Es un sistema de control de versiones — <strong style="color:#F4A91C;">hecho a mano, y por eso frágil.</strong>
+      </p>
+
+      <div style="position:absolute;left:100px;bottom:48px;display:flex;align-items:center;gap:12px;opacity:.5;">
+        <img src="assets/logos/tali-icon.png" style="height:22px;width:auto;" alt=""/>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#99948B;">Taligent · Git, GitFlow y CI/CD · Clase 1</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== 04 · CUATRO PREGUNTAS ======================== -->
+  <section data-label="Cuatro preguntas"
+           data-speaker-notes="Ir una por una y pedirles que respondan ellos con su carpeta real. Recién al final el remate: Git responde las cuatro.">
+    <div style="position:absolute;inset:0;background:#0A0809;color:#F4F1EC;font-family:'IBM Plex Sans',sans-serif;
+                overflow:hidden;padding:74px 90px 86px;display:flex;flex-direction:column;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.24em;
+                  text-transform:uppercase;color:#F4A91C;font-weight:500;">Bloque 1 · Por qué versionar</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:56px;line-height:1.04;
+                 letter-spacing:-0.025em;color:#F8F5F0;margin:12px 0 34px;max-width:1400px;">Cuatro preguntas que esa carpeta no puede responder</h1>
+
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;">
+        <div style="background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:18px;padding:28px 26px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:28px;color:#F4EEE4;">¿Qué cambió entre <span style="font-family:'IBM Plex Mono',monospace;font-size:25px;color:#F4A91C;">_FINAL</span> y <span style="font-family:'IBM Plex Mono',monospace;font-size:25px;color:#F4A91C;">_FINAL_correg</span>?</div>
+          <div style="font-size:22px;line-height:1.44;color:#A8A29A;">Hay que abrir los dos y comparar a ojo.</div>
+        </div>
+        <div style="background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:18px;padding:28px 26px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:28px;color:#F4EEE4;">¿Quién lo cambió y por qué?</div>
+          <div style="font-size:22px;line-height:1.44;color:#A8A29A;">El nombre del archivo no lo dice. La persona que sabía se fue del proyecto.</div>
+        </div>
+        <div style="background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:18px;padding:28px 26px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:28px;color:#F4EEE4;">¿Cómo vuelvo a como estaba el martes?</div>
+          <div style="font-size:22px;line-height:1.44;color:#A8A29A;">Si nadie hizo copia el martes, no se puede.</div>
+        </div>
+        <div style="background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:18px;padding:28px 26px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:28px;color:#F4EEE4;">¿Cómo trabajamos dos a la vez?</div>
+          <div style="font-size:22px;line-height:1.44;color:#A8A29A;">No se puede. Uno espera, o después alguien pega los cambios a mano.</div>
+        </div>
+      </div>
+      </div>
+
+      <div style="position:relative;overflow:hidden;border-radius:18px;padding:28px 30px;
+                  background:linear-gradient(100deg,rgba(235,117,34,0.16),rgba(247,183,40,0.05));border:1px solid rgba(244,169,28,0.45);">
+        <div style="position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,#EB7522,#F7B728);"></div>
+        <p style="font-size:26px;line-height:1.45;color:#B8B2A8;"><strong style="color:#F8F5F0;">Git responde las cuatro.</strong> No porque sea mágico, sino porque guarda el historial en lugar de guardar copias.</p>
+      </div>
+
+      <div style="position:absolute;left:90px;bottom:44px;display:flex;align-items:center;gap:12px;opacity:.5;">
+        <img src="assets/logos/tali-icon.png" style="height:22px;width:auto;" alt=""/>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#99948B;">Taligent · Git, GitFlow y CI/CD · Clase 1</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 05 · CAMBIO DE MENTALIDAD ====================== -->
+  <section data-label="El cambio de mentalidad"
+           data-speaker-notes="La consecuencia práctica es la que importa: dejás de tener miedo a romper algo. Todo lo commiteado se recupera.">
+    <div style="position:absolute;inset:0;background:#0A0809;color:#F4F1EC;font-family:'IBM Plex Sans',sans-serif;
+                overflow:hidden;padding:90px 100px 96px;display:flex;flex-direction:column;">
+      <div style="position:absolute;top:-180px;right:-120px;width:640px;height:640px;pointer-events:none;
+                  background:radial-gradient(circle, rgba(235,117,34,0.16) 0%, rgba(235,117,34,0) 62%);"></div>
+
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.24em;
+                  text-transform:uppercase;color:#F4A91C;font-weight:500;">Bloque 1 · Por qué versionar</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:60px;line-height:1.04;
+                 letter-spacing:-0.025em;color:#F8F5F0;margin:14px 0 42px;max-width:1250px;">El cambio de mentalidad</h1>
+
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;">
+        <div style="background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:34px 32px;display:flex;flex-direction:column;gap:16px;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:34px;color:#F4EEE4;">Con carpetas</div>
+          <div style="font-size:23px;line-height:1.46;color:#A8A29A;">Guardás <strong style="color:#F4EEE4;">estados completos</strong>. Cada copia es un archivo entero, y lo que pasó entre una y otra se perdió.</div>
+          <div style="font-size:23px;line-height:1.46;color:#A8A29A;">El historial vive en el nombre del archivo y en la memoria de quien estuvo.</div>
+        </div>
+        <div style="position:relative;overflow:hidden;border-radius:20px;padding:34px 32px;display:flex;flex-direction:column;gap:16px;
+                    background:linear-gradient(100deg,rgba(235,117,34,0.16),rgba(247,183,40,0.05));border:1px solid rgba(244,169,28,0.45);">
+          <div style="position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,#EB7522,#F7B728);"></div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:34px;color:#F8F5F0;">Con Git</div>
+          <div style="font-size:23px;line-height:1.46;color:#B8B2A8;">Guardás la <strong style="color:#F4A91C;">secuencia de cambios</strong>. Cada paso queda registrado con quién, cuándo y por qué.</div>
+          <div style="font-size:23px;line-height:1.46;color:#B8B2A8;">Cualquier estado anterior se reconstruye. El historial es parte del proyecto, no de la memoria de nadie.</div>
+        </div>
+      </div>
+      </div>
+
+      <p style="font-size:26px;line-height:1.45;color:#B8B2A8;max-width:1450px;">
+        <strong style="color:#F4A91C;">La consecuencia práctica:</strong> dejás de tener miedo a romper algo. Todo lo que está commiteado se puede recuperar.
+      </p>
+
+      <div style="position:absolute;left:100px;bottom:48px;display:flex;align-items:center;gap:12px;opacity:.5;">
+        <img src="assets/logos/tali-icon.png" style="height:22px;width:auto;" alt=""/>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#99948B;">Taligent · Git, GitFlow y CI/CD · Clase 1</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= 06 · SIETE PALABRAS ========================== -->
+  <section data-label="Siete palabras"
+           data-speaker-notes="Todo el vocabulario de Git cabe en siete palabras. Aclarar que Pull Request es la única que no es de Git: la agrega la plataforma.">
+    <div style="position:absolute;inset:0;background:#0A0809;color:#F4F1EC;font-family:'IBM Plex Sans',sans-serif;
+                overflow:hidden;padding:74px 90px 86px;display:flex;flex-direction:column;">
+      <div style="position:absolute;top:-180px;right:-120px;width:640px;height:640px;pointer-events:none;
+                  background:radial-gradient(circle, rgba(235,117,34,0.16) 0%, rgba(235,117,34,0) 62%);"></div>
+
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.24em;
+                  text-transform:uppercase;color:#F4A91C;font-weight:500;">Bloque 2 · Conceptos</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:60px;line-height:1.04;
+                 letter-spacing:-0.025em;color:#F8F5F0;margin:14px 0 34px;max-width:1250px;">Siete palabras y ya está</h1>
+
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:22px;flex:1;align-content:center;">
+        <div style="background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:18px;padding:26px 24px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:30px;color:#F4EEE4;">Repositorio</div>
+          <div style="font-size:21px;line-height:1.44;color:#A8A29A;">La carpeta del proyecto más su historial completo. Cuando clonás, te traés las dos cosas.</div>
+        </div>
+        <div style="background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:18px;padding:26px 24px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:30px;color:#F4EEE4;">Commit</div>
+          <div style="font-size:21px;line-height:1.44;color:#A8A29A;">Una foto del proyecto en un momento, con autor, fecha y un mensaje que explica el porqué.</div>
+        </div>
+        <div style="background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:18px;padding:26px 24px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:30px;color:#F4EEE4;">Branch</div>
+          <div style="font-size:21px;line-height:1.44;color:#A8A29A;">Una línea de trabajo paralela. Cambiás cosas sin afectar lo que los demás están usando.</div>
+        </div>
+        <div style="background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:18px;padding:26px 24px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:30px;color:#F4EEE4;">Merge</div>
+          <div style="font-size:21px;line-height:1.44;color:#A8A29A;">Traer los cambios de una rama a otra. La mayoría de las veces Git lo resuelve solo.</div>
+        </div>
+        <div style="background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:18px;padding:26px 24px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:30px;color:#F4EEE4;">Conflicto</div>
+          <div style="font-size:21px;line-height:1.44;color:#A8A29A;">Cuando dos ramas cambiaron <strong style="color:#F4EEE4;">la misma línea</strong>. Git no adivina: te pide que decidas vos.</div>
+        </div>
+        <div style="background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:18px;padding:26px 24px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:30px;color:#F4EEE4;">Remoto</div>
+          <div style="font-size:21px;line-height:1.44;color:#A8A29A;">La copia que vive en el servidor — GitHub, GitLab, Azure DevOps. El punto de encuentro del equipo.</div>
+        </div>
+        <div style="position:relative;overflow:hidden;grid-column:span 2;border-radius:18px;padding:26px 24px;display:flex;flex-direction:column;gap:10px;
+                    background:linear-gradient(100deg,rgba(235,117,34,0.16),rgba(247,183,40,0.05));border:1px solid rgba(244,169,28,0.45);">
+          <div style="position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,#EB7522,#F7B728);"></div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;color:#F8F5F0;">Pull Request</div>
+          <div style="font-size:21px;line-height:1.44;color:#B8B2A8;">Pedir que tus cambios entren a otra rama, para que alguien los revise antes. <strong style="color:#F4A91C;">No es de Git:</strong> lo agrega la plataforma.</div>
+        </div>
+      </div>
+
+      <div style="position:absolute;left:90px;bottom:44px;display:flex;align-items:center;gap:12px;opacity:.5;">
+        <img src="assets/logos/tali-icon.png" style="height:22px;width:auto;" alt=""/>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#99948B;">Taligent · Git, GitFlow y CI/CD · Clase 1</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= 07 · EL CICLO ============================= -->
+  <section data-label="El ciclo, entero"
+           data-speaker-notes="Insistir en que no hay que memorizarlo. Se pega en un papel al lado del monitor y en dos semanas sale solo.">
+    <div style="position:absolute;inset:0;background:#0A0809;color:#F4F1EC;font-family:'IBM Plex Sans',sans-serif;
+                overflow:hidden;padding:74px 90px 86px;display:flex;flex-direction:column;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.24em;
+                  text-transform:uppercase;color:#F4A91C;font-weight:500;">Bloque 2 · Conceptos</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:60px;line-height:1.04;
+                 letter-spacing:-0.025em;color:#F8F5F0;margin:12px 0 30px;max-width:1250px;">El ciclo, entero</h1>
+
+      <div style="background:#1A1715;border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:34px 40px;
+                  font-family:'IBM Plex Mono',monospace;font-size:25px;line-height:1.75;color:#F1E9DD;white-space:pre;">
+<span style="color:#8C877E;"># 1. Traer la última versión</span>
+git pull
+
+<span style="color:#8C877E;"># 2. Abrir una rama para lo tuyo</span>
+git checkout -b feature/mi-metrica
+
+<span style="color:#8C877E;"># 3. Trabajar, y guardar el avance</span>
+git add metricas/ventas/mi_metrica.sql
+git commit -m "feat: agregar métrica de clientes activos"
+
+<span style="color:#8C877E;"># 4. Subirlo al servidor</span>
+git push -u origin feature/mi-metrica
+
+<span style="color:#8C877E;"># 5. Abrir el Pull Request, que alguien revise, mergear</span></div>
+
+      <p style="font-size:26px;line-height:1.45;color:#B8B2A8;max-width:1450px;margin-top:auto;">
+        <strong style="color:#F4A91C;">Ese es el 90% del uso diario.</strong> No hace falta memorizarlo: se pega en un papel y en dos semanas sale solo.
+      </p>
+
+      <div style="position:absolute;left:90px;bottom:44px;display:flex;align-items:center;gap:12px;opacity:.5;">
+        <img src="assets/logos/tali-icon.png" style="height:22px;width:auto;" alt=""/>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#99948B;">Taligent · Git, GitFlow y CI/CD · Clase 1</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 08 · ADD / COMMIT / PUSH ======================== -->
+  <section data-label="add, commit, push"
+           data-speaker-notes="El malentendido más frecuente de todo el curso. Hasta que no hay push, el cambio existe sólo en su computadora.">
+    <div style="position:absolute;inset:0;background:#0A0809;color:#F4F1EC;font-family:'IBM Plex Sans',sans-serif;
+                overflow:hidden;padding:90px 100px 96px;display:flex;flex-direction:column;">
+      <div style="position:absolute;top:-180px;right:-120px;width:640px;height:640px;pointer-events:none;
+                  background:radial-gradient(circle, rgba(235,117,34,0.16) 0%, rgba(235,117,34,0) 62%);"></div>
+
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.24em;
+                  text-transform:uppercase;color:#F4A91C;font-weight:500;">Bloque 2 · Conceptos</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:56px;line-height:1.04;
+                 letter-spacing:-0.025em;color:#F8F5F0;margin:14px 0 42px;max-width:1400px;">La única distinción que sí conviene entender</h1>
+
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+      <div style="display:flex;align-items:center;gap:18px;">
+        <div style="flex:1;background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:30px 28px;display:flex;flex-direction:column;gap:14px;">
+          <span style="align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:21px;color:#070708;background:linear-gradient(135deg,#F7B728,#EB7522);border-radius:9px;padding:6px 14px;">git add</span>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:31px;color:#F4EEE4;">Elegís qué entra</div>
+          <div style="font-size:22px;line-height:1.44;color:#A8A29A;">De todo lo que tocaste, marcás lo que va a formar parte del próximo commit.</div>
+        </div>
+        <div style="display:flex;align-items:center;font-size:34px;color:#6F6A62;">&rarr;</div>
+        <div style="flex:1;background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:30px 28px;display:flex;flex-direction:column;gap:14px;">
+          <span style="align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:21px;color:#070708;background:linear-gradient(135deg,#F7B728,#EB7522);border-radius:9px;padding:6px 14px;">git commit</span>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:31px;color:#F4EEE4;">Lo registrás en tu historial</div>
+          <div style="font-size:22px;line-height:1.44;color:#A8A29A;">Queda guardado en tu máquina. Nadie más lo ve todavía.</div>
+        </div>
+        <div style="display:flex;align-items:center;font-size:34px;color:#6F6A62;">&rarr;</div>
+        <div style="position:relative;overflow:hidden;flex:1;border-radius:20px;padding:30px 28px;display:flex;flex-direction:column;gap:14px;
+                    background:linear-gradient(100deg,rgba(235,117,34,0.16),rgba(247,183,40,0.05));border:1px solid rgba(244,169,28,0.45);">
+          <div style="position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,#EB7522,#F7B728);"></div>
+          <span style="align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:21px;color:#070708;background:linear-gradient(135deg,#F7B728,#EB7522);border-radius:9px;padding:6px 14px;">git push</span>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:31px;color:#F8F5F0;">Lo publicás</div>
+          <div style="font-size:22px;line-height:1.44;color:#B8B2A8;">Recién ahí llega al servidor y el resto del equipo puede verlo.</div>
+        </div>
+      </div>
+      </div>
+
+      <p style="font-size:26px;line-height:1.45;color:#B8B2A8;max-width:1500px;">
+        <strong style="color:#F4A91C;">El malentendido más frecuente:</strong> "ya lo commiteé" no significa que tu compañero lo tenga. Hasta que no hacés
+        <span style="font-family:'IBM Plex Mono',monospace;color:#F4EEE4;">push</span>, el cambio existe sólo en tu computadora.
+      </p>
+
+      <div style="position:absolute;left:100px;bottom:48px;display:flex;align-items:center;gap:12px;opacity:.5;">
+        <img src="assets/logos/tali-icon.png" style="height:22px;width:auto;" alt=""/>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#99948B;">Taligent · Git, GitFlow y CI/CD · Clase 1</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= 09 · EJERCICIO 1 ========================== -->
+  <section data-label="Ejercicio 1"
+           data-speaker-notes="Dejar la pregunta abierta mientras trabajan: por qué add del archivo puntual y no add punto. Retomarla al cerrar el ejercicio.">
+    <div style="position:absolute;inset:0;background:#0A0809;color:#F4F1EC;font-family:'IBM Plex Sans',sans-serif;
+                overflow:hidden;padding:90px 100px 96px;display:flex;flex-direction:column;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.24em;
+                  text-transform:uppercase;color:#F4A91C;font-weight:500;">Ejercicio 1 · 15 minutos</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:60px;line-height:1.04;
+                 letter-spacing:-0.025em;color:#F8F5F0;margin:14px 0 34px;max-width:1250px;">Tu primera rama</h1>
+
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+      <div style="background:#1A1715;border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:34px 40px;
+                  font-family:'IBM Plex Mono',monospace;font-size:25px;line-height:1.85;color:#F1E9DD;white-space:pre;">
+git clone https://github.com/Taligent-SA/taligent_coe_capacitacion_git.git
+cd taligent_coe_capacitacion_git
+git checkout develop
+git checkout -b feature/tu-nombre-cantidad-clientes</div>
+
+      <p style="font-size:26px;line-height:1.45;color:#B8B2A8;max-width:1500px;margin-top:34px;">
+        Creás el archivo que indica la guía, corrés la validación, commiteás y pusheás.
+      </p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="position:relative;overflow:hidden;border-radius:18px;padding:26px 30px;
+                    background:linear-gradient(100deg,rgba(235,117,34,0.16),rgba(247,183,40,0.05));border:1px solid rgba(244,169,28,0.45);">
+          <div style="position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,#EB7522,#F7B728);"></div>
+          <p style="font-size:26px;line-height:1.45;color:#B8B2A8;"><strong style="color:#F8F5F0;">La pregunta para pensar:</strong> ¿por qué
+            <span style="font-family:'IBM Plex Mono',monospace;color:#F4A91C;">git add</span> del archivo puntual y no
+            <span style="font-family:'IBM Plex Mono',monospace;color:#F4A91C;">git add .</span>?</p>
+        </div>
+        <p style="font-size:22px;line-height:1.45;color:#8C877E;">Guía completa en
+          <span style="font-family:'IBM Plex Mono',monospace;color:#A8A29A;">docs/EJERCICIOS.md</span> del repositorio.</p>
+      </div>
+
+      <div style="position:absolute;left:100px;bottom:48px;display:flex;align-items:center;gap:12px;opacity:.5;">
+        <img src="assets/logos/tali-icon.png" style="height:22px;width:auto;" alt=""/>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#99948B;">Taligent · Git, GitFlow y CI/CD · Clase 1</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 10 · RAMAS SÍ, ¿PERO CUÁLES? =================== -->
+  <section data-label="Ramas sí, ¿pero cuáles?"
+           data-speaker-notes="El punto es que Git no opina. GitFlow es un convenio del equipo, no una característica de la herramienta.">
+    <div style="position:absolute;inset:0;background:#0A0809;color:#F4F1EC;font-family:'IBM Plex Sans',sans-serif;
+                overflow:hidden;padding:90px 100px 96px;display:flex;flex-direction:column;">
+      <div style="position:absolute;top:-180px;right:-120px;width:640px;height:640px;pointer-events:none;
+                  background:radial-gradient(circle, rgba(235,117,34,0.16) 0%, rgba(235,117,34,0) 62%);"></div>
+
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.24em;
+                  text-transform:uppercase;color:#F4A91C;font-weight:500;">Bloque 3 · GitFlow</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:60px;line-height:1.04;
+                 letter-spacing:-0.025em;color:#F8F5F0;margin:14px 0 40px;max-width:1250px;">Ramas sí, ¿pero cuáles?</h1>
+
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+      <div style="display:flex;flex-direction:column;gap:26px;max-width:1500px;">
+        <p style="font-size:32px;line-height:1.4;color:#F4EEE4;">
+          Git te deja crear ramas. No te dice cuántas, ni cómo llamarlas, ni cuándo mergearlas.
+          <strong style="color:#F4A91C;">Eso lo tiene que decidir el equipo.</strong>
+        </p>
+        <div style="position:relative;overflow:hidden;border-radius:20px;padding:30px 32px;
+                    background:linear-gradient(100deg,rgba(235,117,34,0.16),rgba(247,183,40,0.05));border:1px solid rgba(244,169,28,0.45);">
+          <div style="position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,#EB7522,#F7B728);"></div>
+          <p style="font-size:26px;line-height:1.46;color:#B8B2A8;">
+            GitFlow es una de esas decisiones ya tomada. Un convenio: <strong style="color:#F8F5F0;">cinco tipos de rama</strong>, cada uno con un propósito, un origen y un destino.
+          </p>
+        </div>
+      </div>
+      </div>
+
+      <p style="font-size:24px;line-height:1.45;color:#8C877E;max-width:1450px;">
+        No es la única forma de trabajar ni la mejor para todo proyecto. Es la más difundida, y la que mejor se explica.
+      </p>
+
+      <div style="position:absolute;left:100px;bottom:48px;display:flex;align-items:center;gap:12px;opacity:.5;">
+        <img src="assets/logos/tali-icon.png" style="height:22px;width:auto;" alt=""/>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#99948B;">Taligent · Git, GitFlow y CI/CD · Clase 1</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================ 11 · LAS DOS QUE VIVEN PARA SIEMPRE ================ -->
+  <section data-label="main y develop"
+           data-speaker-notes="Que nadie commitee directo no es burocracia: es lo que garantiza que todo cambio pasó por una revisión.">
+    <div style="position:absolute;inset:0;background:#0A0809;color:#F4F1EC;font-family:'IBM Plex Sans',sans-serif;
+                overflow:hidden;padding:74px 90px 86px;display:flex;flex-direction:column;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.24em;
+                  text-transform:uppercase;color:#F4A91C;font-weight:500;">Bloque 3 · GitFlow</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:60px;line-height:1.04;
+                 letter-spacing:-0.025em;color:#F8F5F0;margin:12px 0 40px;max-width:1250px;">Las dos que viven para siempre</h1>
+
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;">
+        <div style="position:relative;overflow:hidden;background:#141215;border:1px solid rgba(86,179,106,0.30);border-radius:20px;padding:32px 30px;display:flex;flex-direction:column;gap:14px;">
+          <div style="position:absolute;top:0;left:0;width:100%;height:4px;background:#56B36A;"></div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.08em;color:#8FD39C;font-weight:600;">main</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:31px;color:#F4EEE4;">Lo que está publicado</div>
+          <div style="font-size:22px;line-height:1.46;color:#A8A29A;">Cada punto de esta rama salió alguna vez a producción. Es la referencia de qué está funcionando hoy.</div>
+          <div style="font-size:22px;line-height:1.46;color:#A8A29A;"><strong style="color:#F4EEE4;">Nadie commitea acá directo.</strong> Sólo llegan merges de <span style="font-family:'IBM Plex Mono',monospace;color:#F4A91C;">release</span> y de <span style="font-family:'IBM Plex Mono',monospace;color:#F2777A;">hotfix</span>, cada uno con su etiqueta de versión.</div>
+        </div>
+        <div style="position:relative;overflow:hidden;background:#141215;border:1px solid rgba(255,255,255,0.10);border-radius:20px;padding:32px 30px;display:flex;flex-direction:column;gap:14px;">
+          <div style="position:absolute;top:0;left:0;width:100%;height:4px;background:#F4EEE4;"></div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.08em;color:#F4EEE4;font-weight:600;">develop</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:31px;color:#F4EEE4;">Lo que va a salir</div>
+          <div style="font-size:22px;line-height:1.46;color:#A8A29A;">Todo lo terminado que todavía no se publicó. Es la sala de espera de la próxima versión.</div>
+          <div style="font-size:22px;line-height:1.46;color:#A8A29A;"><strong style="color:#F4EEE4;">Nadie commitea acá directo.</strong> Sólo llegan merges de <span style="font-family:'IBM Plex Mono',monospace;color:#EB7522;">feature</span>.</div>
+        </div>
+      </div>
+      </div>
+
+      <p style="font-size:26px;line-height:1.45;color:#B8B2A8;max-width:1500px;">
+        Que nadie commitee directo no es burocracia: es lo que garantiza que <strong style="color:#F4A91C;">todo cambio pasó por una revisión</strong>.
+      </p>
+
+      <div style="position:absolute;left:90px;bottom:44px;display:flex;align-items:center;gap:12px;opacity:.5;">
+        <img src="assets/logos/tali-icon.png" style="height:22px;width:auto;" alt=""/>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#99948B;">Taligent · Git, GitFlow y CI/CD · Clase 1</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 12 · LAS TRES TEMPORALES ======================== -->
+  <section data-label="Las tres temporales"
+           data-speaker-notes="Subrayar que hotfix es la única que no nace de develop, y por qué: develop está lleno de cosas a medio terminar que no pueden salir.">
+    <div style="position:absolute;inset:0;background:#0A0809;color:#F4F1EC;font-family:'IBM Plex Sans',sans-serif;
+                overflow:hidden;padding:74px 90px 86px;display:flex;flex-direction:column;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.24em;
+                  text-transform:uppercase;color:#F4A91C;font-weight:500;">Bloque 3 · GitFlow</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:60px;line-height:1.04;
+                 letter-spacing:-0.025em;color:#F8F5F0;margin:12px 0 34px;max-width:1250px;">Las tres temporales</h1>
+
+      <div style="display:flex;flex-direction:column;gap:18px;flex:1;justify-content:center;">
+        <div style="display:flex;align-items:center;gap:24px;background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:18px;padding:26px 30px;">
+          <div style="width:18px;height:88px;border-radius:9px;background:#EB7522;flex:none;"></div>
+          <div style="display:flex;flex-direction:column;gap:6px;min-width:340px;flex:none;">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:0.06em;color:#EB7522;font-weight:600;">feature/*</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:19px;color:#8C877E;">develop &rarr; develop</div>
+          </div>
+          <div style="font-size:22px;line-height:1.44;color:#A8A29A;">Una por cada cosa nueva. Existe para que lo que estás haciendo a medias no le rompa el día a nadie. Se borra después de mergear.</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:24px;background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:18px;padding:26px 30px;">
+          <div style="width:18px;height:120px;border-radius:9px;background:#F7B728;flex:none;"></div>
+          <div style="display:flex;flex-direction:column;gap:6px;min-width:340px;flex:none;">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:0.06em;color:#F7B728;font-weight:600;">release/*</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:19px;color:#8C877E;">develop &rarr; main <em style="color:#F4A91C;">y</em> develop</div>
+          </div>
+          <div style="font-size:22px;line-height:1.44;color:#A8A29A;">La ventana de estabilización. Cuando decidís qué entra en la versión, cortás acá y a partir de ese momento sólo se corrigen errores. Mientras tanto <span style="font-family:'IBM Plex Mono',monospace;color:#F4EEE4;">develop</span> sigue recibiendo trabajo nuevo sin bloquear la salida.</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:24px;background:#141215;border:1px solid rgba(229,72,77,0.30);border-radius:18px;padding:26px 30px;">
+          <div style="width:18px;height:120px;border-radius:9px;background:#E5484D;flex:none;"></div>
+          <div style="display:flex;flex-direction:column;gap:6px;min-width:340px;flex:none;">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:0.06em;color:#F2777A;font-weight:600;">hotfix/*</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:19px;color:#8C877E;">main &rarr; main <em style="color:#F4A91C;">y</em> develop</div>
+          </div>
+          <div style="font-size:22px;line-height:1.44;color:#A8A29A;">La única que no nace de <span style="font-family:'IBM Plex Mono',monospace;color:#F4EEE4;">develop</span>. Cuando producción se rompe, <span style="font-family:'IBM Plex Mono',monospace;color:#F4EEE4;">develop</span> está lleno de cosas a medio terminar que no pueden salir. El hotfix nace de lo publicado, corrige sólo eso, y sale.</div>
+        </div>
+      </div>
+
+      <div style="position:absolute;left:90px;bottom:44px;display:flex;align-items:center;gap:12px;opacity:.5;">
+        <img src="assets/logos/tali-icon.png" style="height:22px;width:auto;" alt=""/>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#99948B;">Taligent · Git, GitFlow y CI/CD · Clase 1</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 13 · EL MODELO COMPLETO ======================== -->
+  <section data-label="El modelo completo"
+           data-speaker-notes="Señalar las dos flechas que vuelven: release y hotfix van a main Y a develop. Siempre dos merges. Es la regla que se repite en el cierre.">
+    <div style="position:absolute;inset:0;background:#0A0809;color:#F4F1EC;font-family:'IBM Plex Sans',sans-serif;
+                overflow:hidden;padding:74px 90px 86px;display:flex;flex-direction:column;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.24em;
+                  text-transform:uppercase;color:#F4A91C;font-weight:500;">Bloque 3 · GitFlow</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:60px;line-height:1.04;
+                 letter-spacing:-0.025em;color:#F8F5F0;margin:14px 0 20px;max-width:1250px;">El modelo completo</h1>
+
+      <div style="flex:1;display:flex;align-items:center;">
+      <svg viewBox="0 0 800 300" style="width:100%;height:auto;font-family:'IBM Plex Mono',monospace;">
+        <text x="6" y="46" font-size="15" font-weight="600" fill="#8FD39C">main</text>
+        <text x="6" y="146" font-size="15" font-weight="600" fill="#F4EEE4">develop</text>
+
+        <line x1="120" y1="42" x2="782" y2="42" fill="none" stroke="#56B36A" stroke-width="2.6"/>
+        <line x1="120" y1="142" x2="782" y2="142" fill="none" stroke="#F4EEE4" stroke-width="2.6"/>
+
+        <path d="M215 142 L255 96 L330 96 L370 142" fill="none" stroke="#EB7522" stroke-width="2.6"/>
+        <text x="258" y="86" font-size="15" fill="#EB7522">feature</text>
+        <path d="M405 142 L445 96 L520 96 L560 142" fill="none" stroke="#EB7522" stroke-width="2.6"/>
+        <text x="448" y="86" font-size="15" fill="#EB7522">feature</text>
+
+        <path d="M560 142 L600 205 L640 205 L680 142" fill="none" stroke="#F7B728" stroke-width="2.6"/>
+        <path d="M640 205 L688 42" fill="none" stroke="#F7B728" stroke-width="2.6"/>
+        <text x="588" y="227" font-size="15" fill="#F7B728">release</text>
+
+        <path d="M718 42 L756 255" fill="none" stroke="#E5484D" stroke-width="2.6"/>
+        <path d="M756 255 L778 142" fill="none" stroke="#E5484D" stroke-width="2.6" stroke-dasharray="5 4"/>
+        <text x="712" y="277" font-size="15" fill="#F2777A">hotfix</text>
+
+        <circle cx="120" cy="42" r="6.5" fill="#0A0809" stroke="#56B36A" stroke-width="2.6"/>
+        <circle cx="688" cy="42" r="6.5" fill="#0A0809" stroke="#56B36A" stroke-width="2.6"/>
+        <circle cx="718" cy="42" r="6.5" fill="#0A0809" stroke="#56B36A" stroke-width="2.6"/>
+        <circle cx="120" cy="142" r="6.5" fill="#0A0809" stroke="#F4EEE4" stroke-width="2.6"/>
+        <circle cx="370" cy="142" r="6.5" fill="#0A0809" stroke="#F4EEE4" stroke-width="2.6"/>
+        <circle cx="560" cy="142" r="6.5" fill="#0A0809" stroke="#F4EEE4" stroke-width="2.6"/>
+        <circle cx="680" cy="142" r="6.5" fill="#0A0809" stroke="#F4EEE4" stroke-width="2.6"/>
+        <circle cx="330" cy="96" r="6.5" fill="#0A0809" stroke="#EB7522" stroke-width="2.6"/>
+        <circle cx="520" cy="96" r="6.5" fill="#0A0809" stroke="#EB7522" stroke-width="2.6"/>
+        <circle cx="640" cy="205" r="6.5" fill="#0A0809" stroke="#F7B728" stroke-width="2.6"/>
+        <circle cx="756" cy="255" r="6.5" fill="#0A0809" stroke="#E5484D" stroke-width="2.6"/>
+
+        <text x="652" y="24" font-size="14" fill="#8C877E">v1.0.0</text>
+        <text x="722" y="24" font-size="14" fill="#8C877E">v1.0.1</text>
+      </svg>
+      </div>
+
+      <p style="font-size:26px;line-height:1.45;color:#B8B2A8;max-width:1400px;margin:18px 0 34px;">
+        <strong style="color:#F4A91C;">Fijate en las dos flechas que vuelven:</strong> release y hotfix van a
+        <span style="font-family:'IBM Plex Mono',monospace;color:#8FD39C;">main</span> <em>y</em> a
+        <span style="font-family:'IBM Plex Mono',monospace;color:#F4EEE4;">develop</span>. Siempre dos merges.
+      </p>
+
+      <div style="position:absolute;left:90px;bottom:44px;display:flex;align-items:center;gap:12px;opacity:.5;">
+        <img src="assets/logos/tali-icon.png" style="height:22px;width:auto;" alt=""/>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#99948B;">Taligent · Git, GitFlow y CI/CD · Clase 1</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== 14 · EL ERROR MÁS SILENCIOSO ===================== -->
+  <section data-label="El error silencioso"
+           data-speaker-notes="Contar que nadie lo detecta en el momento porque no falla nada. Se descubre cuando el mismo bug reaparece y ya nadie se acuerda por qué.">
+    <div style="position:absolute;inset:0;background:#0A0809;color:#F4F1EC;font-family:'IBM Plex Sans',sans-serif;
+                overflow:hidden;padding:90px 100px 96px;display:flex;flex-direction:column;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.24em;
+                  text-transform:uppercase;color:#F4A91C;font-weight:500;">Bloque 3 · GitFlow</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:58px;line-height:1.04;
+                 letter-spacing:-0.025em;color:#F8F5F0;margin:14px 0 40px;max-width:1350px;">El error más común, y el más silencioso</h1>
+
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+      <div style="position:relative;overflow:hidden;border-radius:20px;padding:34px 32px;display:flex;flex-direction:column;gap:16px;
+                  background:linear-gradient(100deg,rgba(229,72,77,0.14),rgba(229,72,77,0.03));border:1px solid rgba(229,72,77,0.35);">
+        <div style="position:absolute;top:0;left:0;width:100%;height:4px;background:#E5484D;"></div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:34px;color:#F8F5F0;">Hacer el hotfix y mergearlo sólo a <span style="font-family:'IBM Plex Mono',monospace;font-size:30px;color:#8FD39C;">main</span></div>
+        <div style="font-size:23px;line-height:1.46;color:#B8B2A8;">Producción queda arreglada. Todo el mundo contento.</div>
+        <div style="font-size:23px;line-height:1.46;color:#B8B2A8;">Tres semanas después sale la versión siguiente — que viene de <span style="font-family:'IBM Plex Mono',monospace;color:#F4EEE4;">develop</span>, que nunca se enteró de la corrección — <strong style="color:#F2777A;">y el bug vuelve</strong>.</div>
+      </div>
+
+      <p style="font-size:24px;line-height:1.45;color:#8C877E;max-width:1500px;margin-top:30px;">
+        Nadie lo detecta en el momento porque no falla nada. Se descubre cuando el mismo error reaparece y ya nadie se acuerda de por qué.
+      </p>
+      </div>
+
+      <div style="position:relative;overflow:hidden;border-radius:20px;padding:30px 32px;
+                  background:linear-gradient(100deg,rgba(235,117,34,0.16),rgba(247,183,40,0.05));border:1px solid rgba(244,169,28,0.45);">
+        <div style="position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,#EB7522,#F7B728);"></div>
+        <p style="font-size:30px;line-height:1.4;color:#F4EEE4;">
+          <strong style="color:#F4A91C;">Regla mnemotécnica:</strong> si la rama toca
+          <span style="font-family:'IBM Plex Mono',monospace;color:#8FD39C;">main</span>, tiene que tocar
+          <span style="font-family:'IBM Plex Mono',monospace;color:#F4EEE4;">develop</span> también.
+        </p>
+      </div>
+
+      <div style="position:absolute;left:100px;bottom:48px;display:flex;align-items:center;gap:12px;opacity:.5;">
+        <img src="assets/logos/tali-icon.png" style="height:22px;width:auto;" alt=""/>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#99948B;">Taligent · Git, GitFlow y CI/CD · Clase 1</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== 15 · EJERCICIOS 2 Y 3 ======================== -->
+  <section data-label="Ejercicios 2 y 3"
+           data-speaker-notes="El grafo del log es GitFlow ya aplicado. Que cuenten los merges ellos: cada release y cada hotfix aparece dos veces.">
+    <div style="position:absolute;inset:0;background:#0A0809;color:#F4F1EC;font-family:'IBM Plex Sans',sans-serif;
+                overflow:hidden;padding:74px 90px 86px;display:flex;flex-direction:column;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.24em;
+                  text-transform:uppercase;color:#F4A91C;font-weight:500;">Ejercicios 2 y 3 · 30 minutos</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:58px;line-height:1.04;
+                 letter-spacing:-0.025em;color:#F8F5F0;margin:12px 0 30px;max-width:1350px;">Recorrer el historial y abrir un PR</h1>
+
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+      <div style="background:#1A1715;border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:30px 40px;
+                  font-family:'IBM Plex Mono',monospace;font-size:26px;line-height:1.6;color:#F1E9DD;white-space:pre;">git log --oneline --graph --all | head -30</div>
+
+      <div style="display:flex;flex-direction:column;gap:20px;margin-top:32px;max-width:1560px;">
+        <p style="font-size:24px;line-height:1.46;color:#A8A29A;">
+          Ese dibujo es GitFlow, ya aplicado: <strong style="color:#EB7522;">cuatro features</strong> que entraron,
+          <strong style="color:#F7B728;">dos versiones publicadas</strong>
+          (<span style="font-family:'IBM Plex Mono',monospace;color:#F4EEE4;">v1.0.0</span> y
+          <span style="font-family:'IBM Plex Mono',monospace;color:#F4EEE4;">v1.1.0</span>) y
+          <strong style="color:#F2777A;">un hotfix</strong> que salió a corregir producción.
+        </p>
+        <p style="font-size:24px;line-height:1.46;color:#A8A29A;">
+          <strong style="color:#F4A91C;">Contá los merges:</strong> los de
+          <span style="font-family:'IBM Plex Mono',monospace;color:#F7B728;">release</span> son cuatro y los de
+          <span style="font-family:'IBM Plex Mono',monospace;color:#F2777A;">hotfix</span> dos. Cada uno aparece <em style="color:#F4EEE4;">dos veces</em> porque fue a
+          <span style="font-family:'IBM Plex Mono',monospace;color:#8FD39C;">main</span> y también a
+          <span style="font-family:'IBM Plex Mono',monospace;color:#F4EEE4;">develop</span>. La regla del slide anterior, dibujada.
+        </p>
+        <p style="font-size:24px;line-height:1.46;color:#A8A29A;">
+          Después abrís tu Pull Request hacia <span style="font-family:'IBM Plex Mono',monospace;color:#F4EEE4;">develop</span> — y revisás el de otro participante. Al menos un comentario.
+        </p>
+      </div>
+      </div>
+
+      <p style="font-size:22px;line-height:1.45;color:#8C877E;">
+        Hay un PR real esperando revisión en el repositorio: el de la tasa de conversión.
+      </p>
+
+      <div style="position:absolute;left:90px;bottom:44px;display:flex;align-items:center;gap:12px;opacity:.5;">
+        <img src="assets/logos/tali-icon.png" style="height:22px;width:auto;" alt=""/>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#99948B;">Taligent · Git, GitFlow y CI/CD · Clase 1</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 16 · CIERRE ============================ -->
+  <section data-label="Cierre"
+           data-speaker-notes="Cerrar con las cuatro y dejar la puerta abierta: el repositorio queda disponible para practicar entre una clase y la otra.">
+    <div style="position:absolute;inset:0;color:#F4F1EC;font-family:'IBM Plex Sans',sans-serif;overflow:hidden;
+                padding:74px 100px 86px;display:flex;flex-direction:column;justify-content:center;
+                background:radial-gradient(120% 120% at 25% 70%, #2A1606 0%, #100B07 45%, #0A0809 100%);">
+      <div style="position:absolute;bottom:-160px;left:-100px;width:720px;height:720px;pointer-events:none;
+                  background:radial-gradient(circle, rgba(235,117,34,0.18) 0%, rgba(235,117,34,0) 62%);"></div>
+
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.24em;
+                  text-transform:uppercase;color:#F4A91C;font-weight:500;z-index:1;">Cierre de la clase 1</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:64px;line-height:1.02;
+                 letter-spacing:-0.025em;color:#F8F5F0;margin:14px 0 38px;max-width:1200px;z-index:1;">Hasta acá</h1>
+
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;z-index:1;">
+        <div style="display:flex;gap:20px;align-items:flex-start;background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:18px;padding:26px 28px;">
+          <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:21px;color:#070708;background:linear-gradient(135deg,#F7B728,#EB7522);border-radius:9px;padding:5px 12px;flex:none;">01</span>
+          <div style="font-size:23px;line-height:1.44;color:#A8A29A;"><strong style="color:#F4EEE4;">Git guarda cambios, no copias.</strong> Por eso puede responder qué, quién, cuándo y por qué.</div>
+        </div>
+        <div style="display:flex;gap:20px;align-items:flex-start;background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:18px;padding:26px 28px;">
+          <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:21px;color:#070708;background:linear-gradient(135deg,#F7B728,#EB7522);border-radius:9px;padding:5px 12px;flex:none;">02</span>
+          <div style="font-size:23px;line-height:1.44;color:#A8A29A;"><strong style="color:#F4EEE4;">El ciclo diario es siempre el mismo:</strong> pull, rama, add, commit, push, Pull Request.</div>
+        </div>
+        <div style="display:flex;gap:20px;align-items:flex-start;background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:18px;padding:26px 28px;">
+          <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:21px;color:#070708;background:linear-gradient(135deg,#F7B728,#EB7522);border-radius:9px;padding:5px 12px;flex:none;">03</span>
+          <div style="font-size:23px;line-height:1.44;color:#A8A29A;"><strong style="color:#F4EEE4;">Las ramas existen para no pisarse.</strong> GitFlow sólo pone nombres y reglas a algo que ya necesitabas.</div>
+        </div>
+        <div style="position:relative;overflow:hidden;display:flex;gap:20px;align-items:flex-start;border-radius:18px;padding:26px 28px;
+                    background:linear-gradient(100deg,rgba(235,117,34,0.16),rgba(247,183,40,0.05));border:1px solid rgba(244,169,28,0.45);">
+          <div style="position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,#EB7522,#F7B728);"></div>
+          <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:21px;color:#070708;background:linear-gradient(135deg,#F7B728,#EB7522);border-radius:9px;padding:5px 12px;flex:none;">04</span>
+          <div style="font-size:23px;line-height:1.44;color:#B8B2A8;"><strong style="color:#F8F5F0;">Si toca <span style="font-family:'IBM Plex Mono',monospace;color:#8FD39C;">main</span>, toca <span style="font-family:'IBM Plex Mono',monospace;color:#F4EEE4;">develop</span>.</strong> Release y hotfix siempre son dos merges.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px;margin-top:40px;z-index:1;max-width:1500px;">
+        <p style="font-size:28px;line-height:1.42;color:#B8B2A8;"><strong style="color:#F4A91C;">En la clase 2:</strong> cómo trabajar de a varios sin pisarse, qué es CI/CD y un quality gate, y cómo se aplica todo esto a Power BI y Qlik.</p>
+        <p style="font-size:22px;line-height:1.45;color:#8C877E;">El repositorio queda disponible para practicar entre una clase y la otra. Los ejercicios se pueden repetir todas las veces que haga falta.</p>
+      </div>
+    </div>
+  </section>
+
+</x-import>

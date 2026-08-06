@@ -14,6 +14,9 @@ config/secrets.yml
 *.qvd
 *.pbix.bak
 
+# PDF de las clases — salen de scripts/build_pdf.py a partir del .dc.html
+docs/clases/*.pdf
+
 # Ruido del sistema operativo y del editor
 .DS_Store
 Thumbs.db
