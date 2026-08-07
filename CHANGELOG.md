@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.1] — portada del sitio
+
+### Agregado
+- `docs/index.html`, una portada para el sitio publicado por GitHub Pages, con el
+  mismo brand kit que las clases. Enlaza las dos clases y el material de apoyo.
+  Antes la raíz del sitio devolvía 404 porque no había `index.html`: el enlace que
+  GitHub muestra en Deployments apuntaba ahí y parecía que el deploy había fallado.
+  Ahora alcanza con repartir una sola URL corta en lugar de dos largas.
+
 ## [1.2.0] — las clases en el brand kit de Taligent
 
 ### Cambiado
