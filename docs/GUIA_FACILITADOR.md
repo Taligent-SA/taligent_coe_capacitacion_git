@@ -1,6 +1,9 @@
 # Guía del facilitador
 
-Cómo dar esta capacitación. Pensada para 3 h 30 con un descanso.
+Cómo dar esta capacitación. **Dos clases de dos horas**, cada una con su descanso.
+
+- **Clase 1 — Fundamentos y GitFlow:** bloques 1 a 3, ejercicios 1 a 3.
+- **Clase 2 — Colaboración, CI/CD y BI:** repaso, bloques 4 a 6, ejercicios 4 y 5.
 
 ---
 
@@ -13,46 +16,101 @@ Mandá el correo de prerrequisitos. Tiene que ser **verificable**, no una lista 
 > Para el taller necesitás dos cosas listas:
 >
 > 1. **Git instalado.** Abrí una terminal y escribí `git --version`. Si te devuelve un número, estás.
-> 2. **Acceso al repositorio.** Entrá a <url> y confirmame que lo ves.
+> 2. **Poder escribir en el repositorio.** Aceptá la invitación que te llega por mail, cloná
+>    https://github.com/Taligent-SA/taligent_coe_capacitacion_git y subí una rama de prueba:
+>
+>    ```bash
+>    git clone https://github.com/Taligent-SA/taligent_coe_capacitacion_git.git
+>    cd taligent_coe_capacitacion_git
+>    git checkout -b prueba/tu-nombre
+>    git push -u origin prueba/tu-nombre
+>    ```
 >
 > Si alguna de las dos falla, escribime **antes** del taller. Resolverlo en vivo nos come media hora de los demás.
 
+**Que la verificación sea el `push`, no el "lo veo".** El repositorio es público: entrar y verlo no
+prueba nada, porque un colaborador con permiso de sólo lectura también lo ve. Lo único que confirma
+que va a poder trabajar es que la rama de prueba llegue al remoto.
+
+Cuando alguien reporta que no puede pushear, chequeá en este orden:
+
+1. **La invitación sigue sin aceptar.** Es la causa más frecuente y no se arregla refrescando.
+   Se aceptan desde el mail o desde `https://github.com/Taligent-SA/taligent_coe_capacitacion_git/invitations`.
+2. **Quedó como colaborador con permiso `read`.** Aceptar no alcanza; hay que subirlo a `write`.
+3. **Cuenta de GitHub nueva con el mail sin verificar.** GitHub deja aceptar la invitación pero no
+   deja pushear, y devuelve un `403` pelado. Se revisa en `https://github.com/settings/emails`.
+
+**El discriminador es el mensaje del remoto.** Si aparece `remote: Permission to ... denied to ...`,
+rechazó GitHub por permisos: casos 1 o 2, o credenciales cacheadas de otra cuenta. Si es un
+`RPC failed; HTTP 403` **sin ninguna línea `remote:`**, no es GitHub quien rechaza: es el caso 3, o
+un proxy con inspección TLS en el medio. El dominio del mail no influye en nada.
+
 ### El día anterior
 
+**Antes de la clase 1:**
+
 - Confirmá que cada participante hizo las dos verificaciones. El que no contestó, no las hizo.
-- Recorré vos el ejercicio 4 (el conflicto) de punta a punta. Es el que más se rompe.
+- Corré vos `./scripts/validar_metricas.sh` para tenerlo fresco: es el ejercicio 2.
+
+**Antes de la clase 2:**
+
+- Recorré el ejercicio 4 (el conflicto) de punta a punta. Es el que más se rompe.
 - Dejá el repo en su estado inicial: `feature/ticket-sin-internos` y `feature/ticket-redondeado` **sin mergear**.
+- Repasá qué quedó flojo en la clase 1: los primeros diez minutos son para eso.
 
 ### Diez minutos antes
 
 - Deck abierto en pantalla completa.
 - Una terminal con la fuente grande — 18 pt como mínimo, y probala desde el fondo de la sala.
 - El repositorio ya clonado en tu máquina, en `develop`.
-- La pestaña de Actions del repo abierta en otra ventana.
+- La pestaña de Actions del repo abierta en otra ventana (para la clase 2).
 
 ---
 
 ## El reparto del tiempo
 
+Dos ventanas de 120 minutos. Los bloques no se parten entre clases: cada clase abre y cierra sola.
+
+### Clase 1 · Fundamentos y GitFlow
+
 | Min | Bloque | Qué pasa |
 |---|---|---|
-| 0–15 | **1 · Por qué versionar** | Conversación. Todavía no se toca el teclado. |
-| 15–45 | **2 · Conceptos** | Teoría corta + demo tuya |
+| 0–8 | **Apertura** | Agenda y confirmar que todos clonaron. |
+| 8–22 | **1 · Por qué versionar** | Conversación. Todavía no se toca el teclado. |
+| 22–45 | **2 · Conceptos** | Teoría corta + demo tuya |
 | 45–60 | **Ejercicio 1** | Primera rama, primer commit |
-| 60–90 | **3 · GitFlow** | El bloque más denso |
-| 90–105 | ☕ **Descanso** | No lo saltees, aunque vayas tarde |
-| 105–135 | **Ejercicios 2 y 3** | Recorrer el historial, abrir y revisar PRs |
-| 135–155 | **4 · Colaborar** | Commits, PRs chicos, .gitignore |
-| 155–175 | **Ejercicio 4** | El conflicto |
-| 175–195 | **5 · CI/CD** | Con el pipeline corriendo en vivo |
-| 195–205 | **Ejercicio 5** | Romper el gate y hacer un hotfix |
-| 205–210 | **6 · Cierre** | El puente hacia BI |
+| 60–70 | ☕ **Descanso** | No lo saltees, aunque vayas tarde |
+| 70–95 | **3 · GitFlow** | El bloque más denso |
+| 95–105 | **Ejercicio 2** | Hacer fallar el quality gate a propósito |
+| 105–117 | **Ejercicio 3** | Abrir un PR y revisar el de otro |
+| 117–120 | **Cierre** | Qué viene en la clase 2 |
 
-**Si vas tarde**, sacrificá en este orden: primero el ejercicio 5, después el 3, después el 2. **Nunca saques el 4** — el conflicto es lo que más miedo da y lo que hay que desactivar sí o sí.
+**Si vas tarde**, sacrificá primero el **ejercicio 2** — lo recuperás en la clase 2, donde el mismo
+script aparece corriendo dentro de CI. Después el 3. **Nunca recortes el bloque 3**: es el que
+sostiene toda la clase 2.
+
+### Clase 2 · Colaboración, CI/CD y BI
+
+| Min | Bloque | Qué pasa |
+|---|---|---|
+| 0–10 | **Repaso** | Dónde quedamos, y que digan qué quedó flojo |
+| 10–30 | **4 · Colaborar** | Commits, PRs chicos, `.gitignore` |
+| 30–52 | **Ejercicio 4** | El conflicto |
+| 52–62 | ☕ **Descanso** | No lo saltees, aunque vayas tarde |
+| 62–85 | **5 · CI/CD** | Con el pipeline corriendo en vivo |
+| 85–100 | **Ejercicio 5** | Un hotfix, con sus dos PRs |
+| 100–110 | **6 · Cierre** | El puente hacia BI |
+| 110–120 | **Preguntas** | Dejalos abiertos a propósito |
+
+**Si vas tarde**, sacrificá primero el **ejercicio 5** y hacelo como demo tuya en cinco minutos;
+después el margen de preguntas. **Nunca saques el ejercicio 4** — el conflicto es lo que más miedo
+da y lo que hay que desactivar sí o sí.
 
 ---
 
 ## Bloque 1 · Por qué versionar
+
+*Clase 1.*
 
 **Objetivo:** que reconozcan el problema como propio antes de que aparezca la solución.
 
@@ -74,6 +132,8 @@ Dejá que cuenten. Alguien va a decir que perdió trabajo, que pisó el archivo 
 
 ## Bloque 2 · Conceptos
 
+*Clase 1.*
+
 **Objetivo:** el modelo mental. Que sepan qué es cada cosa, no cómo se escribe.
 
 **Cómo darlo.** Las siete palabras van rápido, una por una, sin profundizar. La que sí merece tiempo es la distinción **add → commit → push**, porque es la que genera más confusión real.
@@ -91,6 +151,8 @@ Dejá que cuenten. Alguien va a decir que perdió trabajo, que pisó el archivo 
 ---
 
 ## Bloque 3 · GitFlow
+
+*Clase 1.*
 
 **Objetivo:** que entiendan **por qué** existe cada rama. Si sólo memorizan los nombres, el bloque falló.
 
@@ -122,6 +184,8 @@ Y la regla para llevarse:
 
 ## Bloque 4 · Colaborar
 
+*Clase 2.*
+
 **Objetivo:** que entiendan que las convenciones no son burocracia.
 
 **Sobre los mensajes de commit.** No des una lista de reglas. Dales la prueba:
@@ -141,6 +205,8 @@ Ahí solés ver caras de preocupación. Es la reacción correcta.
 ---
 
 ## Bloque 5 · CI/CD
+
+*Clase 2.*
 
 **Objetivo:** el concepto, no la herramienta.
 
@@ -163,6 +229,8 @@ Esa última frase hace más por la credibilidad del concepto que veinte minutos 
 ---
 
 ## Bloque 6 · Cierre
+
+*Clase 2.*
 
 **Objetivo:** conectar con su mundo y dejar la puerta abierta.
 
@@ -190,7 +258,7 @@ Enseñalo como herramienta, no como emergencia: sirve para volver a un estado co
 
 **Alguien se adelanta y termina todo.** Dale trabajo: que revise el PR de otro, o que agregue una validación nueva al quality gate.
 
-**Vas 20 minutos tarde.** Sacá el ejercicio 5 y hacelo como demo tuya en cinco minutos. No recortes el bloque 3.
+**Vas 20 minutos tarde.** En la clase 1, sacá el ejercicio 2 y no recortes el bloque 3. En la clase 2, hacé el ejercicio 5 como demo tuya en cinco minutos y no toques el ejercicio 4.
 
 ---
 
