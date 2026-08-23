@@ -8,8 +8,8 @@ siguiente usa. No hace falta saber SQL: los archivos son texto, y lo que se prac
 ## 0 · Preparación
 
 ```bash
-git clone <url-del-repo>
-cd catalogo-metricas
+git clone https://github.com/Taligent-SA/taligent_coe_capacitacion_git.git
+cd taligent_coe_capacitacion_git
 git checkout develop
 ```
 
@@ -105,12 +105,14 @@ En el repositorio hay dos ramas que tocan **la misma línea** del mismo archivo:
 - `feature/ticket-sin-internos` — excluye clientes internos
 - `feature/ticket-redondeado` — limita el período a partir de 2026
 
+Las dos viven en el remoto y no en tu clon, así que se nombran con el prefijo `origin/`.
+
 Ambas son cambios razonables. Ninguna está mal. Pero Git no puede decidir cuál gana.
 
 ```bash
 git checkout develop
-git merge feature/ticket-sin-internos     # entra sin problemas
-git merge feature/ticket-redondeado       # ✗ CONFLICTO
+git merge origin/feature/ticket-sin-internos     # entra sin problemas
+git merge origin/feature/ticket-redondeado       # ✗ CONFLICTO
 ```
 
 Abrí `metricas/ventas/ticket_promedio.sql`. Vas a ver algo así:
@@ -120,7 +122,7 @@ Abrí `metricas/ventas/ticket_promedio.sql`. Vas a ver algo así:
   AND tipo_cliente <> 'interno'
 =======
   AND periodo >= '202601'
->>>>>>> feature/ticket-redondeado
+>>>>>>> origin/feature/ticket-redondeado
 ```
 
 Arriba lo que ya estaba, abajo lo que viene entrando. **Resolver un conflicto es decidir**: en
