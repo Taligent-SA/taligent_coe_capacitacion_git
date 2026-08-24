@@ -7,8 +7,8 @@ Las dos clases están en el brand kit de Taligent (estilo "Agentic Dark", 1920×
 
 | archivo | contenido | duración |
 |---|---|---|
-| `clase_1_fundamentos_y_gitflow.dc.html` | Bloques 1–3 + ejercicios 1, 2 y 3 | 2 hs |
-| `clase_2_colaboracion_cicd_y_bi.dc.html` | Repaso + bloques 4–6 + ejercicios 4 y 5 | 2 hs |
+| `clase_1_fundamentos_y_gitflow.dc.html` | Bloques 1–3 + ejercicios 1 y 2 | 2 hs |
+| `clase_2_colaboracion_cicd_y_bi.dc.html` | Repaso + bloques 4–6 + ejercicios 3 y 4 | 2 hs |
 
 Existe además una versión de **clase única** de 3,5 hs con el mismo contenido sin
 dividir. Su fuente se perdió y sólo quedó el PDF; estas dos clases se reconstruyeron

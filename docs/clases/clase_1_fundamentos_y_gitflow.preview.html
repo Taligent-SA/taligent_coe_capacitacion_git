@@ -92,7 +92,7 @@
         <div style="background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:30px 28px;display:flex;flex-direction:column;gap:14px;">
           <span style="align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:20px;color:#070708;background:linear-gradient(135deg,#F7B728,#EB7522);border-radius:9px;padding:5px 13px;">Bloque 1</span>
           <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:32px;color:#F4EEE4;">Por qué versionar</div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.1em;text-transform:uppercase;color:#8C877E;">Conversación</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.1em;text-transform:uppercase;color:#8C877E;">Conversación + qué hay en .git</div>
         </div>
         <div style="background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:30px 28px;display:flex;flex-direction:column;gap:14px;">
           <span style="align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:20px;color:#070708;background:linear-gradient(135deg,#F7B728,#EB7522);border-radius:9px;padding:5px 13px;">Bloque 2</span>
@@ -102,7 +102,7 @@
         <div style="background:#141215;border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:30px 28px;display:flex;flex-direction:column;gap:14px;">
           <span style="align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:20px;color:#070708;background:linear-gradient(135deg,#F7B728,#EB7522);border-radius:9px;padding:5px 13px;">Bloque 3</span>
           <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:32px;color:#F4EEE4;">GitFlow</div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.1em;text-transform:uppercase;color:#8C877E;">Teoría + ejercicios 2 y 3</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.1em;text-transform:uppercase;color:#8C877E;">Teoría + ejercicio 2</div>
         </div>
       </div>
       </div>
@@ -193,7 +193,7 @@
     </div>
   </section></div>
 <div class="slide"><section data-label="El cambio de mentalidad"
-           data-speaker-notes="La consecuencia práctica es la que importa: dejás de tener miedo a romper algo. Todo lo commiteado se recupera.">
+           data-speaker-notes="La consecuencia práctica es la que importa: dejás de tener miedo a romper algo. Todo lo commiteado se recupera. Sobre esta slide van los cinco minutos de qué hay adentro de .git — el guión está en la guía del facilitador, bloque 1. Cinco minutos, no diez.">
     <div style="position:absolute;inset:0;background:#0A0809;color:#F4F1EC;font-family:'IBM Plex Sans',sans-serif;
                 overflow:hidden;padding:90px 100px 96px;display:flex;flex-direction:column;">
       <div style="position:absolute;top:-180px;right:-120px;width:640px;height:640px;pointer-events:none;
@@ -621,42 +621,90 @@ git checkout -b feature/tu-nombre-cantidad-clientes</div>
       </div>
     </div>
   </section></div>
-<div class="slide"><section data-label="Ejercicios 2 y 3"
-           data-speaker-notes="El grafo del log es GitFlow ya aplicado. Que cuenten los merges ellos: cada release y cada hotfix aparece dos veces.">
+<div class="slide"><section data-label="Ejercicio 2"
+           data-speaker-notes="El grafo del log es GitFlow ya aplicado; el diagrama de al lado es el mismo modelo idealizado, para que puedan comparar dibujo con salida real. Que cuenten los merges ellos. La consigna es la caja de abajo.">
     <div style="position:absolute;inset:0;background:#0A0809;color:#F4F1EC;font-family:'IBM Plex Sans',sans-serif;
                 overflow:hidden;padding:74px 90px 86px;display:flex;flex-direction:column;">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.24em;
-                  text-transform:uppercase;color:#F4A91C;font-weight:500;">Ejercicios 2 y 3 · 30 minutos</div>
+                  text-transform:uppercase;color:#F4A91C;font-weight:500;">Ejercicio 2 · 15 minutos</div>
       <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:58px;line-height:1.04;
-                 letter-spacing:-0.025em;color:#F8F5F0;margin:12px 0 30px;max-width:1350px;">Recorrer el historial y abrir un PR</h1>
+                 letter-spacing:-0.025em;color:#F8F5F0;margin:12px 0 26px;max-width:1350px;">Recorrer el historial y abrir un PR</h1>
 
-      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
-      <div style="background:#1A1715;border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:30px 40px;
-                  font-family:'IBM Plex Mono',monospace;font-size:26px;line-height:1.6;color:#F1E9DD;white-space:pre;">git log --oneline --graph --all --until=2026-07-30</div>
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:24px;">
 
-      <div style="display:flex;flex-direction:column;gap:20px;margin-top:32px;max-width:1560px;">
-        <p style="font-size:24px;line-height:1.46;color:#A8A29A;">
-          Ese dibujo es GitFlow, ya aplicado: <strong style="color:#EB7522;">tres features</strong> que entraron,
-          <strong style="color:#F7B728;">una versión publicada</strong>
-          (<span style="font-family:'IBM Plex Mono',monospace;color:#F4EEE4;">v1.0.0</span>) y
-          <strong style="color:#F2777A;">un hotfix</strong> que salió a corregir producción.
-        </p>
-        <p style="font-size:24px;line-height:1.46;color:#A8A29A;">
-          <strong style="color:#F4A91C;">Contá los merges:</strong> los de
-          <span style="font-family:'IBM Plex Mono',monospace;color:#F7B728;">release</span> son dos y los de
-          <span style="font-family:'IBM Plex Mono',monospace;color:#F2777A;">hotfix</span> también. Cada uno aparece <em style="color:#F4EEE4;">dos veces</em> porque fue a
-          <span style="font-family:'IBM Plex Mono',monospace;color:#8FD39C;">main</span> y también a
-          <span style="font-family:'IBM Plex Mono',monospace;color:#F4EEE4;">develop</span>. La regla del slide anterior, dibujada.
-        </p>
-        <p style="font-size:24px;line-height:1.46;color:#A8A29A;">
-          Después abrís tu Pull Request hacia <span style="font-family:'IBM Plex Mono',monospace;color:#F4EEE4;">develop</span> — y revisás el de otro participante. Al menos un comentario.
-        </p>
+        <div style="background:#1A1715;border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:26px 40px;
+                    font-family:'IBM Plex Mono',monospace;font-size:26px;line-height:1.6;color:#F1E9DD;white-space:pre;">git log --oneline --graph --all --until=2026-07-30</div>
+
+        <div style="display:flex;align-items:center;gap:38px;">
+
+          <div style="flex:0 0 43%;background:#141110;border:1px solid rgba(255,255,255,0.06);
+                      border-radius:16px;padding:16px 22px 20px;">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:0.16em;
+                        text-transform:uppercase;color:#8C877E;margin-bottom:6px;">El modelo, para comparar</div>
+            <svg viewBox="0 0 800 300" style="width:100%;height:auto;font-family:'IBM Plex Mono',monospace;">
+        <text x="6" y="46" font-size="21" font-weight="600" fill="#8FD39C">main</text>
+        <text x="6" y="146" font-size="21" font-weight="600" fill="#F4EEE4">develop</text>
+
+        <line x1="120" y1="42" x2="782" y2="42" fill="none" stroke="#56B36A" stroke-width="3.4"/>
+        <line x1="120" y1="142" x2="782" y2="142" fill="none" stroke="#F4EEE4" stroke-width="3.4"/>
+
+        <path d="M215 142 L255 96 L330 96 L370 142" fill="none" stroke="#EB7522" stroke-width="3.4"/>
+        <text x="258" y="86" font-size="21" fill="#EB7522">feature</text>
+        <path d="M405 142 L445 96 L520 96 L560 142" fill="none" stroke="#EB7522" stroke-width="3.4"/>
+        <text x="448" y="86" font-size="21" fill="#EB7522">feature</text>
+
+        <path d="M560 142 L600 205 L640 205 L680 142" fill="none" stroke="#F7B728" stroke-width="3.4"/>
+        <path d="M640 205 L688 42" fill="none" stroke="#F7B728" stroke-width="3.4"/>
+        <text x="588" y="227" font-size="21" fill="#F7B728">release</text>
+
+        <path d="M718 42 L756 255" fill="none" stroke="#E5484D" stroke-width="3.4"/>
+        <path d="M756 255 L778 142" fill="none" stroke="#E5484D" stroke-width="3.4" stroke-dasharray="5 4"/>
+        <text x="655" y="279" font-size="21" fill="#F2777A">hotfix</text>
+
+        <circle cx="120" cy="42" r="8" fill="#0A0809" stroke="#56B36A" stroke-width="3.4"/>
+        <circle cx="688" cy="42" r="8" fill="#0A0809" stroke="#56B36A" stroke-width="3.4"/>
+        <circle cx="718" cy="42" r="8" fill="#0A0809" stroke="#56B36A" stroke-width="3.4"/>
+        <circle cx="120" cy="142" r="8" fill="#0A0809" stroke="#F4EEE4" stroke-width="3.4"/>
+        <circle cx="370" cy="142" r="8" fill="#0A0809" stroke="#F4EEE4" stroke-width="3.4"/>
+        <circle cx="560" cy="142" r="8" fill="#0A0809" stroke="#F4EEE4" stroke-width="3.4"/>
+        <circle cx="680" cy="142" r="8" fill="#0A0809" stroke="#F4EEE4" stroke-width="3.4"/>
+        <circle cx="330" cy="96" r="8" fill="#0A0809" stroke="#EB7522" stroke-width="3.4"/>
+        <circle cx="520" cy="96" r="8" fill="#0A0809" stroke="#EB7522" stroke-width="3.4"/>
+        <circle cx="640" cy="205" r="8" fill="#0A0809" stroke="#F7B728" stroke-width="3.4"/>
+        <circle cx="756" cy="255" r="8" fill="#0A0809" stroke="#E5484D" stroke-width="3.4"/>
+
+        <text x="646" y="22" font-size="16" fill="#8C877E">v1.0.0</text>
+        <text x="730" y="22" font-size="16" fill="#8C877E">v1.0.1</text>
+      </svg>
+          </div>
+
+          <div style="flex:1;display:flex;flex-direction:column;gap:18px;">
+            <p style="font-size:23px;line-height:1.45;color:#A8A29A;">
+              Ese dibujo es GitFlow, ya aplicado: <strong style="color:#EB7522;">tres features</strong> que entraron,
+              <strong style="color:#F7B728;">una versión publicada</strong>
+              (<span style="font-family:'IBM Plex Mono',monospace;color:#F4EEE4;">v1.0.0</span>) y
+              <strong style="color:#F2777A;">un hotfix</strong> que salió a corregir producción.
+            </p>
+            <p style="font-size:23px;line-height:1.45;color:#A8A29A;">
+              <strong style="color:#F4A91C;">Contá los merges:</strong> los de
+              <span style="font-family:'IBM Plex Mono',monospace;color:#F7B728;">release</span> son dos y los de
+              <span style="font-family:'IBM Plex Mono',monospace;color:#F2777A;">hotfix</span> también. Cada uno aparece <em style="color:#F4EEE4;">dos veces</em> porque fue a
+              <span style="font-family:'IBM Plex Mono',monospace;color:#8FD39C;">main</span> y también a
+              <span style="font-family:'IBM Plex Mono',monospace;color:#F4EEE4;">develop</span>. La regla del slide anterior, dibujada.
+            </p>
+          </div>
+        </div>
+
+        <div style="position:relative;overflow:hidden;border-radius:18px;padding:22px 30px;
+                    background:linear-gradient(100deg,rgba(235,117,34,0.16),rgba(247,183,40,0.05));border:1px solid rgba(244,169,28,0.45);">
+          <div style="position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,#EB7522,#F7B728);"></div>
+          <p style="font-size:24px;line-height:1.42;color:#B8B2A8;">
+            <strong style="color:#F8F5F0;">La consigna:</strong> abrí tu Pull Request hacia
+            <span style="font-family:'IBM Plex Mono',monospace;color:#F4EEE4;">develop</span> y revisá el de otro
+            participante — al menos un comentario. Hay un PR real esperando revisión: el de la tasa de conversión.
+          </p>
+        </div>
       </div>
-      </div>
-
-      <p style="font-size:22px;line-height:1.45;color:#8C877E;">
-        Hay un PR real esperando revisión en el repositorio: el de la tasa de conversión.
-      </p>
 
       <div style="position:absolute;left:90px;bottom:44px;display:flex;align-items:center;gap:12px;opacity:.5;">
         <img src="assets/logos/tali-icon.png" style="height:22px;width:auto;" alt=""/>
