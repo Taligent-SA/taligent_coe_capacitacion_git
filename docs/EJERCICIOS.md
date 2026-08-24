@@ -3,9 +3,14 @@
 Cuatro ejercicios. Cada uno tarda entre diez y veinte minutos y deja algo aprendido que el
 siguiente usa. No hace falta saber SQL: los archivos son texto, y lo que se practica es el flujo.
 
+Cada ejercicio arranca con una nota que dice en qué momento de la clase cae, para que puedas
+ubicarte. El detalle de cada bloque está en la [guía del facilitador](GUIA_FACILITADOR.md).
+
 ---
 
 ## 0 · Preparación
+
+> **Clase 1** · apertura, antes del bloque 1.
 
 ```bash
 git clone https://github.com/Taligent-SA/taligent_coe_capacitacion_git.git
@@ -30,6 +35,8 @@ quieras ver todo.
 ---
 
 ## 1 · Tu primera rama y tu primer commit
+
+> **Clase 1** · va al final del bloque 2, *Los conceptos de Git*. Slide 9.
 
 Vas a agregar una métrica nueva.
 
@@ -77,6 +84,8 @@ credencial sin darse cuenta.
 
 ## 2 · Abrir un Pull Request y revisar el de otro
 
+> **Clase 1** · va al final del bloque 3, *GitFlow*. Slide 15. Es el último de la clase 1.
+
 Abrí el PR desde la web del repositorio: base `develop`, comparar con tu rama.
 
 Cuando pusheaste la rama, el remoto te contestó con el link ya armado — `Create a pull request for
@@ -98,6 +107,8 @@ comentario: una duda, una sugerencia de nombre, lo que sea. La revisión no es u
 ---
 
 ## 3 · Provocar un conflicto y resolverlo
+
+> **Clase 2** · va al final del bloque 4, *Colaborar sin pisarse*.
 
 En el repositorio hay dos ramas que tocan **la misma línea** del mismo archivo:
 
@@ -142,6 +153,8 @@ Para volver al estado inicial y que otro pueda hacer el ejercicio:
 ---
 
 ## 4 · Un hotfix
+
+> **Clase 2** · va al final del bloque 5, *CI/CD*.
 
 Producción tiene un bug y `develop` está lleno de cosas a medio terminar que no pueden salir.
 
