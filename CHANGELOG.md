@@ -1,5 +1,36 @@
 # Changelog
 
+## [1.3.0] — el material, alineado con lo que el alumno ve
+
+### Cambiado
+- La guía del facilitador pasa al formato de **dos clases de dos horas**, que es como
+  se dicta desde la 1.1.0. Seguía escrita para la clase única de 3 h 30.
+- El prerrequisito de acceso al repositorio deja de ser *"entrá y confirmame que lo
+  ves"* y pasa a ser una **prueba de push**. El repositorio es público: verlo no
+  prueba nada, y el permiso de escritura es lo único que hace falta y lo único que
+  no se puede resolver en el momento.
+
+### Corregido
+- El ejercicio 0 mandaba a correr `git log --oneline --graph --all | head -30` y
+  después describía *"tres features que entraron, una versión publicada y un
+  hotfix"*. Las primeras 30 líneas ya eran commits del propio material de la clase
+  —el brand kit, las guías, los releases del curso— y el dibujo de GitFlow arrancaba
+  en la línea 60 de 103. Ahora el comando lleva `--until=2026-07-30`, que acota el
+  grafo al repositorio de práctica. **Es la segunda vez que pasa lo mismo** (ver la
+  1.1.1): la diferencia es que antes se corrigió el texto para que describiera el
+  grafo del momento, y ahora se ancló el comando, así que no vuelve a desfasarse
+  cuando entre material nuevo.
+- La slide 15 de la clase 1 hablaba de cuatro features y dos versiones publicadas
+  (`v1.0.0` y `v1.1.0`), que no coincidía ni con la guía ni con la salida real.
+  Quedó en tres features, una versión, y dos merges de release y dos de hotfix.
+- Los comandos de clone y de merge de la guía de ejercicios: el clone apuntaba a un
+  `<url-del-repo>` de relleno y entraba a una carpeta `catalogo-metricas` que no
+  existe, y el ejercicio del conflicto mergeaba ramas locales que el alumno no
+  tiene. Ahora llevan el prefijo `origin/`, que además explica por qué.
+- El ejercicio 3 no decía de dónde sale el pull request. Ahora aclara que **el PR es
+  de GitHub y no de git**, que el link ya viene en la salida del push, y que
+  `gh pr create` es comodidad y no otra forma de trabajar.
+
 ## [1.2.1] — portada del sitio
 
 ### Agregado
