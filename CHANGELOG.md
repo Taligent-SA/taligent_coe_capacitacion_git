@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.1] — el guión de `.git`, más corto
+
+### Cambiado
+- El guión de los cinco minutos de qué hay adentro de `.git` pasa de 608 a **375 palabras
+  habladas** —de cuatro minutos y medio a dos y medio—, para que las preguntas quepan dentro de los
+  cinco minutos en lugar de desbordarlos. Salen los objetos y los hashes, la deduplicación, el index
+  como concepto con nombre propio, la palabra «referencias» y el comando `git cat-file`. Queda el
+  vocabulario de fotos encadenadas y papelitos con una dirección: menos preciso a propósito, sin
+  dejar de ser cierto.
+- La demo en vivo baja de cinco comandos a tres, y se agrega una respuesta de una línea para la
+  pregunta previsible por la cadena de caracteres de una rama.
+
 ## [1.4.0] — cuatro ejercicios, y Git por dentro
 
 ### Agregado
