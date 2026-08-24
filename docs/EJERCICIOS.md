@@ -8,19 +8,24 @@ siguiente usa. No hace falta saber SQL: los archivos son texto, y lo que se prac
 ## 0 · Preparación
 
 ```bash
-git clone <url-del-repo>
-cd catalogo-metricas
+git clone https://github.com/Taligent-SA/taligent_coe_capacitacion_git.git
+cd taligent_coe_capacitacion_git
 git checkout develop
 ```
 
 Mirá dónde estás parado y qué pasó antes:
 
 ```bash
-git log --oneline --graph --all | head -30
+git log --oneline --graph --all --until=2026-07-30
 ```
 
-Eso que ves es el historial completo del repositorio: tres features que entraron, una versión
+Eso que ves es el historial del repositorio: tres features que entraron, una versión
 publicada y un hotfix que salió a corregir producción. **Ese dibujo es GitFlow.**
+
+El corte por fecha no es caprichoso: hasta el 30 de julio está el repositorio de práctica, que es
+lo que nos interesa mirar. Lo que vino después son los commits del material de esta capacitación
+—slides, guías, releases del curso— y para este ejercicio son ruido. Sacale el `--until` cuando
+quieras ver todo.
 
 ---
 
@@ -90,6 +95,16 @@ Volvé a dejar el archivo como estaba antes de seguir.
 
 Abrí el PR desde la web del repositorio: base `develop`, comparar con tu rama.
 
+Cuando pusheaste la rama, el remoto te contestó con el link ya armado — `Create a pull request for
+'tu-rama' on GitHub by visiting: …`. Alcanza con abrirlo. Si esa salida ya no está a la vista, la URL
+se arma sola con el patrón `.../compare/develop...tu-rama?expand=1`.
+
+**El pull request no es de git, es de GitHub.** No existe ningún `git pull-request`: git sabe de
+ramas, commits y remotos, y el PR —con su revisión, sus comentarios y su botón de merge— es una capa
+que agrega la plataforma encima. Por eso se abre desde la web. Quien tenga instalado el cliente de
+GitHub puede hacer lo mismo sin salir de la terminal con `gh pr create --base develop`, pero es
+comodidad, no otra forma de trabajar.
+
 En la descripción, escribí **qué** cambió y **por qué**. No "agregué un archivo".
 
 Después, **buscá el PR de otro participante y revisalo**. Mirá el diff y dejá al menos un
@@ -105,12 +120,14 @@ En el repositorio hay dos ramas que tocan **la misma línea** del mismo archivo:
 - `feature/ticket-sin-internos` — excluye clientes internos
 - `feature/ticket-redondeado` — limita el período a partir de 2026
 
+Las dos viven en el remoto y no en tu clon, así que se nombran con el prefijo `origin/`.
+
 Ambas son cambios razonables. Ninguna está mal. Pero Git no puede decidir cuál gana.
 
 ```bash
 git checkout develop
-git merge feature/ticket-sin-internos     # entra sin problemas
-git merge feature/ticket-redondeado       # ✗ CONFLICTO
+git merge origin/feature/ticket-sin-internos     # entra sin problemas
+git merge origin/feature/ticket-redondeado       # ✗ CONFLICTO
 ```
 
 Abrí `metricas/ventas/ticket_promedio.sql`. Vas a ver algo así:
@@ -120,7 +137,7 @@ Abrí `metricas/ventas/ticket_promedio.sql`. Vas a ver algo así:
   AND tipo_cliente <> 'interno'
 =======
   AND periodo >= '202601'
->>>>>>> feature/ticket-redondeado
+>>>>>>> origin/feature/ticket-redondeado
 ```
 
 Arriba lo que ya estaba, abajo lo que viene entrando. **Resolver un conflicto es decidir**: en
