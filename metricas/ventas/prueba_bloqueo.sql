@@ -1,4 +1,5 @@
 -- metrica: Prueba de bloqueo
--- descripcion: Sin dueño, el gate debe fallar.
+-- dueño: prueba
+-- descripcion: Con dueño, el gate debe pasar.
 
 SELECT 1;
