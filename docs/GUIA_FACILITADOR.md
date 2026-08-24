@@ -213,6 +213,14 @@ plumbing, y no lo vas a necesitar nunca para trabajar».
 
 > Todo lo que está commiteado se recupera. Esa es justamente la idea: dejás de tener miedo a probar cosas, porque siempre podés volver.
 
+> ### ⏱ ACÁ VA EL EJERCICIO 1 · minuto 50 · dura 15
+>
+> **Tu primera rama y tu primer commit.** Slide 9. Que abran `docs/EJERCICIOS.md` en el punto 1 y
+> lo sigan de ahí — no dictes los comandos.
+>
+> Mientras trabajan, mirá quién se traba: **el 90% se traba en el `push`**, no en el commit.
+> Al volver, la pregunta para cerrar: por qué `git add` del archivo puntual y no `git add .`.
+
 ---
 
 ## Bloque 3 · GitFlow
@@ -245,6 +253,18 @@ Y la regla para llevarse:
 
 > Si la rama toca `main`, tiene que tocar `develop` también.
 
+> ### ⏱ ACÁ VA EL EJERCICIO 2 · minuto 100 · dura 15
+>
+> **Recorrer el historial y abrir un PR.** Slide 15, punto 2 de la guía de ejercicios.
+>
+> Arranca con el `git log` acotado: que comparen el dibujo chico de la slide con lo que les
+> imprime la terminal. Después abren su PR hacia `develop` y **revisan el de otro** — al menos un
+> comentario. Si nadie tiene PR todavía, está el de la tasa de conversión, que queda abierto a
+> propósito.
+>
+> **Es el último ejercicio de la clase.** Si vas tarde, que abran el suyo y la revisión queda de
+> tarea; no lo saltees entero.
+
 ---
 
 ## Bloque 4 · Colaborar
@@ -266,6 +286,16 @@ Y la regla para llevarse:
 > Si subís una credencial y después la borrás, **sigue estando en el historial**. Cualquiera que clone el repo la tiene. La única salida es rotar la credencial, no borrarla.
 
 Ahí solés ver caras de preocupación. Es la reacción correcta.
+
+> ### ⏱ ACÁ VA EL EJERCICIO 3 · minuto 30 de la clase 2 · dura 22
+>
+> **Provocar un conflicto y resolverlo.** Punto 3 de la guía de ejercicios.
+>
+> Es el más largo y el que más se rompe: revisalo entero vos antes de la clase. Si a alguien no le
+> aparece el conflicto es porque ya mergeó una de las dos ramas — `git reset --hard origin/develop`
+> y de nuevo.
+>
+> **Este no se saca nunca**, aunque vayas tarde.
 
 ---
 
@@ -290,6 +320,15 @@ Esa última frase hace más por la credibilidad del concepto que veinte minutos 
 **Sobre por qué el gate bloquea en vez de avisar:**
 
 > Una advertencia que no bloquea se ignora. La primera vez con culpa, la décima ni se lee.
+
+> ### ⏱ ACÁ VA EL EJERCICIO 4 · minuto 85 de la clase 2 · dura 15
+>
+> **Un hotfix, con sus dos PRs.** Punto 4 de la guía de ejercicios.
+>
+> Lo que importa no es que salga el hotfix: es que abran **los dos** PRs. El que abre uno solo
+> reprodujo el error silencioso del bloque 3, y ese es el remate.
+>
+> Si vas tarde, este se hace como demo tuya en cinco minutos.
 
 ---
 
