@@ -90,6 +90,16 @@ Volvé a dejar el archivo como estaba antes de seguir.
 
 Abrí el PR desde la web del repositorio: base `develop`, comparar con tu rama.
 
+Cuando pusheaste la rama, el remoto te contestó con el link ya armado — `Create a pull request for
+'tu-rama' on GitHub by visiting: …`. Alcanza con abrirlo. Si esa salida ya no está a la vista, la URL
+se arma sola con el patrón `.../compare/develop...tu-rama?expand=1`.
+
+**El pull request no es de git, es de GitHub.** No existe ningún `git pull-request`: git sabe de
+ramas, commits y remotos, y el PR —con su revisión, sus comentarios y su botón de merge— es una capa
+que agrega la plataforma encima. Por eso se abre desde la web. Quien tenga instalado el cliente de
+GitHub puede hacer lo mismo sin salir de la terminal con `gh pr create --base develop`, pero es
+comodidad, no otra forma de trabajar.
+
 En la descripción, escribí **qué** cambió y **por qué**. No "agregué un archivo".
 
 Después, **buscá el PR de otro participante y revisalo**. Mirá el diff y dejá al menos un
