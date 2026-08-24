@@ -2,8 +2,8 @@
 
 Cómo dar esta capacitación. **Dos clases de dos horas**, cada una con su descanso.
 
-- **Clase 1 — Fundamentos y GitFlow:** bloques 1 a 3, ejercicios 1 a 3.
-- **Clase 2 — Colaboración, CI/CD y BI:** repaso, bloques 4 a 6, ejercicios 4 y 5.
+- **Clase 1 — Fundamentos y GitFlow:** bloques 1 a 3, ejercicios 1 y 2.
+- **Clase 2 — Colaboración, CI/CD y BI:** repaso, bloques 4 a 6, ejercicios 3 y 4.
 
 ---
 
@@ -50,11 +50,14 @@ un proxy con inspección TLS en el medio. El dominio del mail no influye en nada
 **Antes de la clase 1:**
 
 - Confirmá que cada participante hizo las dos verificaciones. El que no contestó, no las hizo.
-- Corré vos `./scripts/validar_metricas.sh` para tenerlo fresco: es el ejercicio 2.
+- Corré vos `./scripts/validar_metricas.sh` para tenerlo fresco: aparece al pasar en el
+  ejercicio 1 y es el extra opcional del final.
+- Repasá los cinco minutos de «qué hay adentro de `.git`» y dejá una terminal parada en el
+  repositorio, por si lo mostrás en vivo.
 
 **Antes de la clase 2:**
 
-- Recorré el ejercicio 4 (el conflicto) de punta a punta. Es el que más se rompe.
+- Recorré el ejercicio 3 (el conflicto) de punta a punta. Es el que más se rompe.
 - Dejá el repo en su estado inicial: `feature/ticket-sin-internos` y `feature/ticket-redondeado` **sin mergear**.
 - Repasá qué quedó flojo en la clase 1: los primeros diez minutos son para eso.
 
@@ -76,18 +79,17 @@ Dos ventanas de 120 minutos. Los bloques no se parten entre clases: cada clase a
 | Min | Bloque | Qué pasa |
 |---|---|---|
 | 0–8 | **Apertura** | Agenda y confirmar que todos clonaron. |
-| 8–22 | **1 · Por qué versionar** | Conversación. Todavía no se toca el teclado. |
-| 22–45 | **2 · Conceptos** | Teoría corta + demo tuya |
-| 45–60 | **Ejercicio 1** | Primera rama, primer commit |
-| 60–70 | ☕ **Descanso** | No lo saltees, aunque vayas tarde |
-| 70–95 | **3 · GitFlow** | El bloque más denso |
-| 95–105 | **Ejercicio 2** | Hacer fallar el quality gate a propósito |
-| 105–117 | **Ejercicio 3** | Abrir un PR y revisar el de otro |
-| 117–120 | **Cierre** | Qué viene en la clase 2 |
+| 8–27 | **1 · Por qué versionar** | Conversación + los cinco minutos de qué hay adentro de `.git` |
+| 27–50 | **2 · Conceptos** | Teoría corta + demo tuya |
+| 50–65 | **Ejercicio 1** | Primera rama, primer commit |
+| 65–75 | ☕ **Descanso** | No lo saltees, aunque vayas tarde |
+| 75–100 | **3 · GitFlow** | El bloque más denso |
+| 100–115 | **Ejercicio 2** | Recorrer el historial, abrir un PR y revisar el de otro |
+| 115–120 | **Cierre** | Qué viene en la clase 2 |
 
-**Si vas tarde**, sacrificá primero el **ejercicio 2** — lo recuperás en la clase 2, donde el mismo
-script aparece corriendo dentro de CI. Después el 3. **Nunca recortes el bloque 3**: es el que
-sostiene toda la clase 2.
+**Si vas tarde**, lo primero que se recorta es la **revisión del PR de otro**: que abran el suyo y
+que la revisión quede de tarea. Lo segundo, los cinco minutos de `.git` — son un lujo, no un
+cimiento. **Nunca recortes el bloque 3**: es el que sostiene toda la clase 2.
 
 ### Clase 2 · Colaboración, CI/CD y BI
 
@@ -95,15 +97,15 @@ sostiene toda la clase 2.
 |---|---|---|
 | 0–10 | **Repaso** | Dónde quedamos, y que digan qué quedó flojo |
 | 10–30 | **4 · Colaborar** | Commits, PRs chicos, `.gitignore` |
-| 30–52 | **Ejercicio 4** | El conflicto |
+| 30–52 | **Ejercicio 3** | El conflicto |
 | 52–62 | ☕ **Descanso** | No lo saltees, aunque vayas tarde |
-| 62–85 | **5 · CI/CD** | Con el pipeline corriendo en vivo |
-| 85–100 | **Ejercicio 5** | Un hotfix, con sus dos PRs |
+| 62–85 | **5 · CI/CD** | Con el pipeline corriendo en vivo. Si sobra tiempo, el gate fallando en vivo |
+| 85–100 | **Ejercicio 4** | Un hotfix, con sus dos PRs |
 | 100–110 | **6 · Cierre** | El puente hacia BI |
 | 110–120 | **Preguntas** | Dejalos abiertos a propósito |
 
-**Si vas tarde**, sacrificá primero el **ejercicio 5** y hacelo como demo tuya en cinco minutos;
-después el margen de preguntas. **Nunca saques el ejercicio 4** — el conflicto es lo que más miedo
+**Si vas tarde**, sacrificá primero el **ejercicio 4** y hacelo como demo tuya en cinco minutos;
+después el margen de preguntas. **Nunca saques el ejercicio 3** — el conflicto es lo que más miedo
 da y lo que hay que desactivar sí o sí.
 
 ---
@@ -126,7 +128,82 @@ Dejá que cuenten. Alguien va a decir que perdió trabajo, que pisó el archivo 
 
 > Esto no es desprolijidad. Es un sistema de control de versiones hecho a mano. Funciona hasta que sos más de uno, o hasta que pasa el tiempo suficiente como para no acordarte.
 
-**No** entres en cómo funciona Git internamente. Ni objetos, ni SHA, ni árboles. No hace falta y espanta.
+### Los cinco minutos de qué hay adentro de `.git`
+
+*Va sobre la slide «El cambio de mentalidad», justo antes de las siete palabras.* La slide dice que
+con Git guardás la secuencia de cambios en lugar de estados completos. Estos cinco minutos cuentan
+**cómo** hace eso, concretamente. Después de esto, el vocabulario del bloque 2 deja de ser
+abstracto.
+
+**Reglá el reloj: son cinco minutos, no diez.** No es un bloque de teoría, es una mirada abajo del
+capó. Si alguien pregunta algo que se va de tema —cómo funciona el hash, qué pasa con archivos
+binarios grandes— anotalo para el final y seguí. La regla es: ningún concepto que no se pueda ver
+en pantalla en un comando.
+
+**El guión:**
+
+> Cuando corrés `git init`, o cuando clonás un repositorio, no pasa gran cosa a la vista: aparece
+> una carpeta oculta llamada `.git`, y nada más. Todo lo demás que ven ahí adentro es su carpeta de
+> trabajo de siempre, con sus archivos normales. Git no los toca.
+>
+> Esa carpeta `.git` **es el repositorio**. Si la borran, sus archivos siguen estando, pero el
+> proyecto se convierte en una carpeta común y el historial desaparece. Y al revés: si copian esa
+> carpeta a otra máquina, se llevan el historial entero.
+>
+> ¿Qué hay adentro? Básicamente tres cosas.
+>
+> La primera son los **objetos**. Cada vez que guardan algo, Git comprime el contenido del archivo y
+> lo escribe con un nombre que no elige nadie: es el resultado de pasar ese contenido por una
+> función que devuelve una cadena de cuarenta caracteres. Contenido idéntico da nombre idéntico, así
+> que si dos archivos del proyecto son iguales, se guarda una sola vez. Y si un archivo no cambió
+> entre dos commits, no se vuelve a guardar: se apunta al mismo objeto. Por eso el historial de un
+> proyecto de años ocupa mucho menos de lo que uno esperaría.
+>
+> Un **commit** también es un objeto, y es chiquito. Dice cuatro cosas: cuál es la foto completa de
+> la carpeta en ese momento, quién lo hizo, cuándo, con qué mensaje — y cuál es el commit anterior.
+> Esa última es la importante: cada commit apunta al que vino antes. Eso encadenado es el historial.
+> No hay una base de datos con la lista de versiones; hay una cadena.
+>
+> La segunda cosa son las **referencias**. Y acá viene lo que más sorprende: una rama no es una copia
+> del proyecto. Es un archivo de texto con un hash adentro. `develop` es literalmente un archivo que
+> dice «el último commit de esta rama es este». Crear una rama es escribir cuarenta caracteres en un
+> archivo nuevo. Por eso es instantáneo, y por eso no hay que tenerle ningún miedo: no se duplica
+> nada. Hay una referencia especial, `HEAD`, que dice en cuál de todas están parados ahora.
+>
+> Y la tercera es el **index**, que también se llama staging area. Es la lista de lo que va a entrar
+> en el próximo commit.
+>
+> Con eso, el ciclo entero se explica solo. Editan un archivo: por ahora tocaron sólo su carpeta de
+> trabajo, Git lo ve modificado y nada más. Hacen `git add`: ahí Git ya guarda el contenido como
+> objeto y lo anota en el index. Hacen `git commit`: toma la foto de lo que estaba en el index, crea
+> el objeto del commit apuntando al anterior, y mueve la referencia de la rama para que apunte al
+> nuevo. Todo esto pasó **en su máquina**, sin red. Por eso Git es rápido: casi todo es local.
+>
+> Y recién cuando hacen `git push`, Git mira qué objetos tiene el servidor, le manda los que le
+> faltan, y le pide que mueva su referencia de la rama. Eso es un push: mandar objetos y mover un
+> puntero.
+>
+> La consecuencia práctica de todo esto es la que importa: si algo llegó a ser un commit, el objeto
+> está escrito en el disco. Aunque después «desaparezca» de una rama, el objeto sigue ahí y se
+> recupera. Por eso lo que decíamos recién de perder el miedo a romper algo no es una frase
+> motivacional: es cómo está construido.
+
+**Si lo querés mostrar en vivo** —tres comandos, treinta segundos— parate en el repositorio clonado:
+
+```bash
+ls -a                        # ahí está .git, y nada más raro
+ls .git                      # objects, refs, HEAD, index, config
+cat .git/HEAD                # dice en qué rama estás parado
+cat .git/refs/heads/develop  # una rama: un archivo con un hash adentro
+git cat-file -p HEAD         # un commit por dentro: tree, parent, autor, mensaje
+```
+
+El que más impacta es `cat .git/refs/heads/develop`. Ver que una rama es un archivo con cuarenta
+caracteres adentro desarma de golpe la idea de que ramificar es caro.
+
+**Lo que sí conviene evitar**, aunque lo pregunten: qué es exactamente SHA-1, cómo funciona el
+packing, qué es un árbol de Merkle, y todo lo que sea `git reflog` o `git gc`. Espanta y no lo van a
+usar. Si insisten: «existe, se llama plumbing, y no lo vas a necesitar nunca para trabajar».
 
 ---
 
@@ -254,11 +331,11 @@ git reset --hard origin/develop
 
 Enseñalo como herramienta, no como emergencia: sirve para volver a un estado conocido. Aclará que descarta cambios locales.
 
-**El conflicto del ejercicio 4 no aparece.** Es porque ya mergearon una de las dos ramas antes. `git reset --hard origin/develop` y de nuevo.
+**El conflicto del ejercicio 3 no aparece.** Es porque ya mergearon una de las dos ramas antes. `git reset --hard origin/develop` y de nuevo.
 
 **Alguien se adelanta y termina todo.** Dale trabajo: que revise el PR de otro, o que agregue una validación nueva al quality gate.
 
-**Vas 20 minutos tarde.** En la clase 1, sacá el ejercicio 2 y no recortes el bloque 3. En la clase 2, hacé el ejercicio 5 como demo tuya en cinco minutos y no toques el ejercicio 4.
+**Vas 20 minutos tarde.** En la clase 1, dejá la revisión del PR de tarea y no recortes el bloque 3. En la clase 2, hacé el ejercicio 4 como demo tuya en cinco minutos y no toques el ejercicio 3.
 
 ---
 

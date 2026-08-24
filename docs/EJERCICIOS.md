@@ -1,6 +1,6 @@
 # Guía del taller
 
-Cinco ejercicios. Cada uno tarda entre diez y veinte minutos y deja algo aprendido que el
+Cuatro ejercicios. Cada uno tarda entre diez y veinte minutos y deja algo aprendido que el
 siguiente usa. No hace falta saber SQL: los archivos son texto, y lo que se practica es el flujo.
 
 ---
@@ -53,7 +53,9 @@ WHERE anulado = 0
 GROUP BY periodo;
 ```
 
-Antes de commitear, corré el quality gate:
+Antes de commitear, corré el quality gate — es un script del repositorio que revisa que la métrica
+tenga encabezado completo y que no se te haya colado una credencial. Al final de esta guía está
+explicado en detalle; por ahora alcanza con correrlo y ver que pasa:
 
 ```bash
 ./scripts/validar_metricas.sh
@@ -73,25 +75,7 @@ credencial sin darse cuenta.
 
 ---
 
-## 2 · Hacer fallar el quality gate a propósito
-
-Sacale la línea `-- dueño:` a tu archivo y volvé a correr la validación.
-
-```bash
-./scripts/validar_metricas.sh
-```
-
-Falla, y te dice exactamente qué le falta. Ese mismo script es el que corre CI cuando abrís el PR:
-**si falla en tu máquina, falla allá, y el merge queda bloqueado.**
-
-Ahora probá algo peor: agregá al final del archivo una línea con
-`-- password = miclave123` y corré la validación de nuevo.
-
-Volvé a dejar el archivo como estaba antes de seguir.
-
----
-
-## 3 · Abrir un Pull Request y revisar el de otro
+## 2 · Abrir un Pull Request y revisar el de otro
 
 Abrí el PR desde la web del repositorio: base `develop`, comparar con tu rama.
 
@@ -113,7 +97,7 @@ comentario: una duda, una sugerencia de nombre, lo que sea. La revisión no es u
 
 ---
 
-## 4 · Provocar un conflicto y resolverlo
+## 3 · Provocar un conflicto y resolverlo
 
 En el repositorio hay dos ramas que tocan **la misma línea** del mismo archivo:
 
@@ -145,7 +129,6 @@ este caso las dos condiciones son compatibles, así que la respuesta correcta es
 borrar las marcas. Después:
 
 ```bash
-./scripts/validar_metricas.sh
 git add metricas/ventas/ticket_promedio.sql
 git commit
 ```
@@ -158,7 +141,7 @@ Para volver al estado inicial y que otro pueda hacer el ejercicio:
 
 ---
 
-## 5 · Un hotfix
+## 4 · Un hotfix
 
 Producción tiene un bug y `develop` está lleno de cosas a medio terminar que no pueden salir.
 
@@ -173,3 +156,28 @@ Corregí lo que quieras en una métrica, commiteá, y **abrí dos PRs**: uno hac
 **Para pensar:** ¿qué pasa si te olvidás del segundo? El bug vuelve en la próxima versión, porque
 `develop` nunca se enteró de la corrección. Es el error más común del modelo y el más difícil de
 detectar: no falla nada hasta que reaparece.
+
+---
+
+## Extra · El quality gate (opcional)
+
+Esto no es Git. Es una buena práctica que se apoya en Git, y por eso va al final: si el tiempo
+alcanza lo hacemos, y si no, alcanza con saber que el script existe y qué hace.
+
+En `scripts/validar_metricas.sh` hay un **quality gate**: un script que revisa que cada métrica
+tenga encabezado con nombre, dueño y descripción, y que no se cuele nada que parezca una
+credencial. Se corre a mano antes de commitear:
+
+```bash
+./scripts/validar_metricas.sh
+```
+
+Probalo al revés, que es donde se entiende. Sacale la línea `-- dueño:` a tu archivo y corrélo:
+falla, y te dice exactamente qué le falta. Ahora probá algo peor: agregá al final una línea con
+`-- password = miclave123` y corrélo de nuevo.
+
+**Lo que importa es dónde corre también:** ese mismo script se ejecuta solo en CI cuando abrís el
+Pull Request. Si falla en tu máquina, falla allá, y el merge queda bloqueado. Esa es toda la idea
+de CI, y es el tema de la clase 2.
+
+Volvé a dejar el archivo como estaba antes de seguir.
