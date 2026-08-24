@@ -1,5 +1,31 @@
 # Changelog
 
+## [1.4.0] — cuatro ejercicios, y Git por dentro
+
+### Agregado
+- **Los cinco minutos de qué hay adentro de `.git`**, un guión nuevo en el bloque 1 de la guía del
+  facilitador para dar sobre la slide «El cambio de mentalidad»: los objetos y por qué un commit
+  apunta al anterior, las referencias y por qué una rama es un archivo con un hash adentro, el
+  index, y el recorrido de `clone`/`init` hasta el `push`. Trae cinco comandos para mostrarlo en
+  vivo y una lista de preguntas que conviene esquivar.
+  Reemplaza a la indicación anterior de **no** entrar en el funcionamiento interno de Git. Es un
+  cambio de criterio deliberado, con su propio límite de tiempo escrito al lado.
+- La slide del ejercicio 2 muestra ahora el diagrama de «El modelo completo» junto al comando, en
+  chico, para poder comparar el modelo idealizado con la salida real del `git log`.
+
+### Cambiado
+- **El ejercicio de hacer fallar el quality gate deja de ser un ejercicio.** No es de Git: es una
+  buena práctica que se apoya en Git. Pasa al final de la guía como extra opcional, con el mismo
+  contenido, y en la clase 2 queda como demo dentro del bloque de CI/CD si el tiempo alcanza.
+- Los ejercicios se renumeran de **1 a 4**: primera rama, abrir un PR, provocar un conflicto y un
+  hotfix. Quedan alineados la guía de ejercicios, los dos cronogramas de la guía del facilitador
+  —incluido qué recortar si vas tarde—, las slides de las dos clases y el README de `docs/clases`.
+- Los diez minutos que libera el ejercicio que salió van al bloque 1, que es donde entran los cinco
+  minutos de `.git`.
+- La consigna del ejercicio 2 —abrir el PR y revisar el de otro— sale del cuerpo de texto
+  explicativo y pasa a una caja propia. Estaba escrita entre las explicaciones del grafo y se leía
+  como una nota del facilitador y no como lo que hay que hacer.
+
 ## [1.3.0] — el material, alineado con lo que el alumno ve
 
 ### Cambiado
