@@ -16,11 +16,16 @@ git checkout develop
 Mirá dónde estás parado y qué pasó antes:
 
 ```bash
-git log --oneline --graph --all | head -30
+git log --oneline --graph --all --until=2026-07-30
 ```
 
-Eso que ves es el historial completo del repositorio: tres features que entraron, una versión
+Eso que ves es el historial del repositorio: tres features que entraron, una versión
 publicada y un hotfix que salió a corregir producción. **Ese dibujo es GitFlow.**
+
+El corte por fecha no es caprichoso: hasta el 30 de julio está el repositorio de práctica, que es
+lo que nos interesa mirar. Lo que vino después son los commits del material de esta capacitación
+—slides, guías, releases del curso— y para este ejercicio son ruido. Sacale el `--until` cuando
+quieras ver todo.
 
 ---
 
