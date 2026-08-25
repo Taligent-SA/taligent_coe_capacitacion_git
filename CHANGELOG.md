@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.5.0] — saber en qué momento va cada ejercicio
+
+### Agregado
+- **Llamadas de ejercicio en la guía del facilitador.** Cada bloque que precede a un ejercicio
+  cierra ahora con una marca —`⏱ ACÁ VA EL EJERCICIO N`— que dice cuál es, en qué minuto cae,
+  cuánto dura, en qué slide se apoya, qué mirar mientras los participantes trabajan y qué hacer si
+  se va tarde. Son cuatro: bloque 2 → ejercicio 1, bloque 3 → ejercicio 2, bloque 4 → ejercicio 3,
+  bloque 5 → ejercicio 4.
+  Antes los ejercicios aparecían **sólo** en la tabla de tiempos, y al dictar no había forma de
+  darse cuenta, leyendo el bloque, de que el ejercicio venía justo ahí.
+- La referencia inversa en la guía de ejercicios: cada ejercicio abre diciendo a qué clase y a qué
+  bloque pertenece y en qué slide se apoya. Sirve para quien dicta y para quien lo lee desde el
+  repositorio y quiere ubicarse.
+
 ## [1.4.1] — el guión de `.git`, más corto
 
 ### Cambiado
