@@ -404,49 +404,7 @@ git merge origin/feature/ticket-redondeado     <span style="color:#F2777A;"># &#
       </div>
     </div>
   </section></div>
-<div class="slide"><section data-label="Una historia real"
-           data-speaker-notes="Es el ejemplo más concreto de toda la clase: pasó en este mismo repositorio, esta misma semana. Aprovecharlo.">
-    <div style="position:absolute;inset:0;background:#0A0809;color:#F4F1EC;font-family:'IBM Plex Sans',sans-serif;
-                overflow:hidden;padding:74px 90px 86px;display:flex;flex-direction:column;">
-      <div style="position:absolute;top:-180px;right:-120px;width:640px;height:640px;pointer-events:none;
-                  background:radial-gradient(circle, rgba(235,117,34,0.16) 0%, rgba(235,117,34,0) 62%);"></div>
-
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.24em;
-                  text-transform:uppercase;color:#F4A91C;font-weight:500;">Bloque 5 · CI/CD</div>
-      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:56px;line-height:1.04;
-                 letter-spacing:-0.025em;color:#F8F5F0;margin:12px 0 30px;max-width:1350px;">Una historia real, de esta misma semana</h1>
-
-      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:26px;">
-        <p style="font-size:25px;line-height:1.44;color:#A8A29A;max-width:1620px;">
-          El quality gate de este repositorio se escribió en una Mac. Corría perfecto:
-        </p>
-
-        <div style="align-self:flex-start;background:#1A1715;border:1px solid rgba(86,179,106,0.30);border-radius:16px;padding:22px 34px;
-                    font-family:'IBM Plex Mono',monospace;font-size:26px;color:#8FD39C;white-space:pre;">QUALITY GATE: OK</div>
-
-        <p style="font-size:25px;line-height:1.44;color:#A8A29A;max-width:1620px;">
-          Al subirlo, CI —que corre en Linux— <strong style="color:#F2777A;">falló en trece verificaciones</strong>. El motivo:
-          <span style="font-family:'IBM Plex Mono',monospace;color:#F4EEE4;">grep</span> en macOS acepta un patrón que empieza con
-          <span style="font-family:'IBM Plex Mono',monospace;color:#F4EEE4;">--</span>, y el de Linux lo interpreta como fin de opciones.
-          El chequeo nunca se estaba aplicando.
-        </p>
-      </div>
-
-      <div style="position:relative;overflow:hidden;border-radius:20px;padding:28px 32px;
-                  background:linear-gradient(100deg,rgba(235,117,34,0.16),rgba(247,183,40,0.05));border:1px solid rgba(244,169,28,0.45);">
-        <div style="position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,#EB7522,#F7B728);"></div>
-        <p style="font-size:26px;line-height:1.42;color:#B8B2A8;">
-          Funcionaba en la máquina de quien lo escribió y no funcionaba en ningún otro lado. Eso es exactamente lo que CI existe para atrapar:
-          <strong style="color:#F8F5F0;">«en mi máquina anda» deja de ser un argumento</strong>.
-        </p>
-      </div>
-
-      <div style="position:absolute;left:90px;bottom:44px;display:flex;align-items:center;gap:12px;opacity:.5;">
-        <img src="assets/logos/tali-icon.png" style="height:22px;width:auto;" alt=""/>
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#99948B;">Taligent · Git, GitFlow y CI/CD · Clase 2</span>
-      </div>
-    </div>
-  </section></div>
+<div class="slide"></div>
 <div class="slide"><section data-label="Ejercicio 4"
            data-speaker-notes="La pregunta del final es la trampa: si se olvidan del segundo PR, el bug vuelve. Es la regla de la clase 1, ahora en las manos.">
     <div style="position:absolute;inset:0;background:#0A0809;color:#F4F1EC;font-family:'IBM Plex Sans',sans-serif;
@@ -618,7 +576,7 @@ git checkout -b hotfix/1.0.2-tu-nombre   <span style="color:#8C877E;"># ojo: de 
     </div>
   </section></div>
   </div></div>
-  <div id="hud">1 / 14 &nbsp;·&nbsp; &larr; &rarr; / espacio &nbsp;·&nbsp; F = fullscreen</div>
+  <div id="hud">1 / 13 &nbsp;·&nbsp; &larr; &rarr; / espacio &nbsp;·&nbsp; F = fullscreen</div>
 <script>
   var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
   var stage = document.getElementById('stage');
