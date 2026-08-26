@@ -1,7 +1,6 @@
 -- metrica: Cantidad de clientes activos
--- dueño: tu nombre
 -- descripcion: Clientes distintos con al menos una compra en el período.
-
+-- dueño: Franco Battaglia
 SELECT
     periodo,
     COUNT(DISTINCT cliente) AS clientes_activos
