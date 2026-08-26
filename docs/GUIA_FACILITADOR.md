@@ -135,75 +135,63 @@ con Git guardás la secuencia de cambios en lugar de estados completos. Estos ci
 **cómo** hace eso, concretamente. Después de esto, el vocabulario del bloque 2 deja de ser
 abstracto.
 
-**Reglá el reloj: son cinco minutos, no diez.** No es un bloque de teoría, es una mirada abajo del
-capó. Si alguien pregunta algo que se va de tema —cómo funciona el hash, qué pasa con archivos
-binarios grandes— anotalo para el final y seguí. La regla es: ningún concepto que no se pueda ver
-en pantalla en un comando.
+**El guión son dos minutos y medio hablado.** El resto del bloque es colchón para las preguntas,
+que van a salir. Si nadie pregunta nada, no lo estires: seguí con las siete palabras. Si alguien
+pregunta algo que se va de tema, anotalo para el final. La regla es: ningún concepto que no se pueda
+ver en pantalla con un comando.
 
 **El guión:**
 
-> Cuando corrés `git init`, o cuando clonás un repositorio, no pasa gran cosa a la vista: aparece
-> una carpeta oculta llamada `.git`, y nada más. Todo lo demás que ven ahí adentro es su carpeta de
-> trabajo de siempre, con sus archivos normales. Git no los toca.
+> Cuando clonan un repositorio, o cuando corren `git init` en una carpeta, no pasa gran cosa a la
+> vista: aparece una carpeta oculta que se llama `.git`. Todo lo demás que ven ahí adentro son sus
+> archivos de siempre, tal cual, sin tocar.
 >
-> Esa carpeta `.git` **es el repositorio**. Si la borran, sus archivos siguen estando, pero el
-> proyecto se convierte en una carpeta común y el historial desaparece. Y al revés: si copian esa
-> carpeta a otra máquina, se llevan el historial entero.
+> Esa carpeta `.git` **es el repositorio**. Si la borran, los archivos siguen estando, pero el
+> proyecto se convierte en una carpeta común y el historial desaparece. Y al revés: si se la copian
+> a otra máquina, se llevan el historial entero.
 >
-> ¿Qué hay adentro? Básicamente tres cosas.
+> ¿Y qué guarda adentro? Fotos. Cada vez que hacen un commit, Git guarda una foto del proyecto en
+> ese momento y le pega una etiqueta con cuatro datos: quién, cuándo, por qué —el mensaje— y cuál
+> fue la foto anterior. Ese «cuál fue la anterior» es el que importa: cada commit sabe de dónde
+> viene. Todas esas fotos encadenadas son el historial. No hay una lista de versiones en ningún
+> lado: hay una cadena.
 >
-> La primera son los **objetos**. Cada vez que guardan algo, Git comprime el contenido del archivo y
-> lo escribe con un nombre que no elige nadie: es el resultado de pasar ese contenido por una
-> función que devuelve una cadena de cuarenta caracteres. Contenido idéntico da nombre idéntico, así
-> que si dos archivos del proyecto son iguales, se guarda una sola vez. Y si un archivo no cambió
-> entre dos commits, no se vuelve a guardar: se apunta al mismo objeto. Por eso el historial de un
-> proyecto de años ocupa mucho menos de lo que uno esperaría.
+> Y las ramas, que es lo que más sorprende. Una rama no es una copia del proyecto. Es un papelito
+> que dice «la última foto de esta rama es esta». Nada más. Crear una rama es escribir ese papelito.
+> Por eso es instantáneo aunque el proyecto pese un giga, y por eso no hay que tenerles ningún
+> miedo.
 >
-> Un **commit** también es un objeto, y es chiquito. Dice cuatro cosas: cuál es la foto completa de
-> la carpeta en ese momento, quién lo hizo, cuándo, con qué mensaje — y cuál es el commit anterior.
-> Esa última es la importante: cada commit apunta al que vino antes. Eso encadenado es el historial.
-> No hay una base de datos con la lista de versiones; hay una cadena.
+> Con eso, el ciclo se explica solo. Editan un archivo: por ahora tocaron su carpeta y nada más.
+> Hacen `git add`: le dicen a Git cuáles de las cosas que tocaron van a entrar en la próxima foto.
+> Hacen `git commit`: saca la foto y mueve el papelito de la rama. Y ojo con esto, que es lo que más
+> cuesta: todo lo que pasó hasta acá pasó **en su máquina**, sin internet. Por eso Git es tan rápido
+> — casi todo es local.
 >
-> La segunda cosa son las **referencias**. Y acá viene lo que más sorprende: una rama no es una copia
-> del proyecto. Es un archivo de texto con un hash adentro. `develop` es literalmente un archivo que
-> dice «el último commit de esta rama es este». Crear una rama es escribir cuarenta caracteres en un
-> archivo nuevo. Por eso es instantáneo, y por eso no hay que tenerle ningún miedo: no se duplica
-> nada. Hay una referencia especial, `HEAD`, que dice en cuál de todas están parados ahora.
+> Recién cuando hacen `git push`, Git le manda al servidor las fotos que le faltan y le pide que
+> mueva su papelito. Eso es un push, y recién ahí existe para los demás.
 >
-> Y la tercera es el **index**, que también se llama staging area. Es la lista de lo que va a entrar
-> en el próximo commit.
->
-> Con eso, el ciclo entero se explica solo. Editan un archivo: por ahora tocaron sólo su carpeta de
-> trabajo, Git lo ve modificado y nada más. Hacen `git add`: ahí Git ya guarda el contenido como
-> objeto y lo anota en el index. Hacen `git commit`: toma la foto de lo que estaba en el index, crea
-> el objeto del commit apuntando al anterior, y mueve la referencia de la rama para que apunte al
-> nuevo. Todo esto pasó **en su máquina**, sin red. Por eso Git es rápido: casi todo es local.
->
-> Y recién cuando hacen `git push`, Git mira qué objetos tiene el servidor, le manda los que le
-> faltan, y le pide que mueva su referencia de la rama. Eso es un push: mandar objetos y mover un
-> puntero.
->
-> La consecuencia práctica de todo esto es la que importa: si algo llegó a ser un commit, el objeto
-> está escrito en el disco. Aunque después «desaparezca» de una rama, el objeto sigue ahí y se
-> recupera. Por eso lo que decíamos recién de perder el miedo a romper algo no es una frase
-> motivacional: es cómo está construido.
+> Y de todo esto quiero que se lleven una sola cosa: si algo llegó a ser un commit, la foto está
+> guardada. Aunque después parezca que desapareció, se recupera. Por eso lo que decíamos hace un
+> rato de perder el miedo a romper algo no es una frase de autoayuda: es cómo está construido.
 
-**Si lo querés mostrar en vivo** —tres comandos, treinta segundos— parate en el repositorio clonado:
+**Si lo querés mostrar en vivo** —tres comandos, veinte segundos— parate en el repositorio clonado.
+El orden importa: el último es el que hace ruido.
 
 ```bash
 ls -a                        # ahí está .git, y nada más raro
-ls .git                      # objects, refs, HEAD, index, config
-cat .git/HEAD                # dice en qué rama estás parado
-cat .git/refs/heads/develop  # una rama: un archivo con un hash adentro
-git cat-file -p HEAD         # un commit por dentro: tree, parent, autor, mensaje
+ls .git                      # lo que guarda adentro
+cat .git/refs/heads/develop  # una rama: un papelito con una dirección
 ```
 
-El que más impacta es `cat .git/refs/heads/develop`. Ver que una rama es un archivo con cuarenta
-caracteres adentro desarma de golpe la idea de que ramificar es caro.
+Ver que una rama son unos pocos caracteres en un archivo desarma de golpe la idea de que ramificar
+es caro. Si te preguntan qué es esa cadena rara, una respuesta de una línea que no abre puertas:
+«es la dirección de esa foto, y sale del contenido mismo — si el contenido cambia, cambia la
+dirección». Y seguís.
 
-**Lo que sí conviene evitar**, aunque lo pregunten: qué es exactamente SHA-1, cómo funciona el
-packing, qué es un árbol de Merkle, y todo lo que sea `git reflog` o `git gc`. Espanta y no lo van a
-usar. Si insisten: «existe, se llama plumbing, y no lo vas a necesitar nunca para trabajar».
+**Lo que sí conviene evitar**, aunque lo pregunten: qué es exactamente un hash, cómo se comprimen
+los archivos adentro de `.git`, el staging area como concepto aparte, y todo lo que sea `git reflog`
+o `git gc`. Espanta, come los cinco minutos y no lo van a usar. Si insisten: «existe, se llama
+plumbing, y no lo vas a necesitar nunca para trabajar».
 
 ---
 
@@ -224,6 +212,14 @@ usar. Si insisten: «existe, se llama plumbing, y no lo vas a necesitar nunca pa
 **Pregunta que siempre aparece:** *¿y si me equivoco y rompo algo?*
 
 > Todo lo que está commiteado se recupera. Esa es justamente la idea: dejás de tener miedo a probar cosas, porque siempre podés volver.
+
+> ### ⏱ ACÁ VA EL EJERCICIO 1 · minuto 50 · dura 15
+>
+> **Tu primera rama y tu primer commit.** Slide 9. Que abran `docs/EJERCICIOS.md` en el punto 1 y
+> lo sigan de ahí — no dictes los comandos.
+>
+> Mientras trabajan, mirá quién se traba: **el 90% se traba en el `push`**, no en el commit.
+> Al volver, la pregunta para cerrar: por qué `git add` del archivo puntual y no `git add .`.
 
 ---
 
@@ -257,6 +253,18 @@ Y la regla para llevarse:
 
 > Si la rama toca `main`, tiene que tocar `develop` también.
 
+> ### ⏱ ACÁ VA EL EJERCICIO 2 · minuto 100 · dura 15
+>
+> **Recorrer el historial y abrir un PR.** Slide 15, punto 2 de la guía de ejercicios.
+>
+> Arranca con el `git log` acotado: que comparen el dibujo chico de la slide con lo que les
+> imprime la terminal. Después abren su PR hacia `develop` y **revisan el de otro** — al menos un
+> comentario. Si nadie tiene PR todavía, está el de la tasa de conversión, que queda abierto a
+> propósito.
+>
+> **Es el último ejercicio de la clase.** Si vas tarde, que abran el suyo y la revisión queda de
+> tarea; no lo saltees entero.
+
 ---
 
 ## Bloque 4 · Colaborar
@@ -278,6 +286,16 @@ Y la regla para llevarse:
 > Si subís una credencial y después la borrás, **sigue estando en el historial**. Cualquiera que clone el repo la tiene. La única salida es rotar la credencial, no borrarla.
 
 Ahí solés ver caras de preocupación. Es la reacción correcta.
+
+> ### ⏱ ACÁ VA EL EJERCICIO 3 · minuto 30 de la clase 2 · dura 22
+>
+> **Provocar un conflicto y resolverlo.** Punto 3 de la guía de ejercicios.
+>
+> Es el más largo y el que más se rompe: revisalo entero vos antes de la clase. Si a alguien no le
+> aparece el conflicto es porque ya mergeó una de las dos ramas — `git reset --hard origin/develop`
+> y de nuevo.
+>
+> **Este no se saca nunca**, aunque vayas tarde.
 
 ---
 
@@ -302,6 +320,15 @@ Esa última frase hace más por la credibilidad del concepto que veinte minutos 
 **Sobre por qué el gate bloquea en vez de avisar:**
 
 > Una advertencia que no bloquea se ignora. La primera vez con culpa, la décima ni se lee.
+
+> ### ⏱ ACÁ VA EL EJERCICIO 4 · minuto 85 de la clase 2 · dura 15
+>
+> **Un hotfix, con sus dos PRs.** Punto 4 de la guía de ejercicios.
+>
+> Lo que importa no es que salga el hotfix: es que abran **los dos** PRs. El que abre uno solo
+> reprodujo el error silencioso del bloque 3, y ese es el remate.
+>
+> Si vas tarde, este se hace como demo tuya en cinco minutos.
 
 ---
 
