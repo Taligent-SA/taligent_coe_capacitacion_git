@@ -4,7 +4,7 @@
 
 SELECT
     periodo,
-    SUM(importe_neto) / COUNT(DISTINCT comprobante) AS ticket_promedio
+    SUM(importe_neto) / NULLIF(COUNT(DISTINCT comprobante), 0) AS ticket_promedio
 FROM ventas.comprobantes
 WHERE anulado = 0
 GROUP BY periodo;
