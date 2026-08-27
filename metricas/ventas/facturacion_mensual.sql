@@ -10,4 +10,6 @@ FROM ventas.comprobantes
 WHERE anulado = 0
 GROUP BY periodo, unidad_negocio;
 
+
+--Comentario ejemplo para el ejercicio
 -- Nota: 'importe_neto' ya viene sin IVA desde el origen.

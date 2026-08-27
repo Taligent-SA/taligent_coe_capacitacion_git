@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.5.1] — sale la historia del grep
+
+### Quitado
+- **La slide «Una historia real» del deck de la clase 2** (era la 10). Contaba el fallo del quality
+  gate del 29/07/2026 como una diferencia entre el `grep` de macOS y el de GNU/Linux, y hablaba de
+  trece verificaciones fallidas. Ninguna de las dos cosas se sostiene: en el log de esa corrida
+  fallaron **nueve** chequeos —tres archivos por tres campos— y el `grep` de macOS rechaza un patrón
+  que empieza con `--` exactamente igual que el de Linux. El bug no dependía del sistema operativo.
+  A un día de dictar se opta por sacarla en lugar de reescribirla.
+- El conteo de diapositivas de la clase 2 en la portada del sitio pasa de 14 a **13**.
+
 ## [1.5.0] — saber en qué momento va cada ejercicio
 
 ### Agregado
