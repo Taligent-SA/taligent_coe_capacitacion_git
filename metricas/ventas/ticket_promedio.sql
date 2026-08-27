@@ -4,7 +4,8 @@
 
 SELECT
     periodo,
-    SUM(importe_neto) / COUNT(DISTINCT comprobante) AS ticket_promedio
+    SUM(importe_neto) / COUNT(DISTINCT comprobante) AS ticket_promedio,
+    MAX(comprobante) AS ultimo_comprobante
 FROM ventas.comprobantes
 WHERE anulado = 0
 GROUP BY periodo;
