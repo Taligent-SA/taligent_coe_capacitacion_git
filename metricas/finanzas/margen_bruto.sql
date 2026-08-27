@@ -9,4 +9,5 @@ SELECT
     END AS margen_bruto_pct
 FROM ventas.comprobantes
 WHERE anulado = 0
+    AND periodo >= '202601'
 GROUP BY periodo;
