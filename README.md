@@ -32,3 +32,6 @@ Antes de abrir un PR, corré la validación local:
 ```
 
 Si eso pasa, CI también va a pasar. Es el mismo script.
+
+..
+
