@@ -1,5 +1,6 @@
+```sql
 -- metrica: Cantidad de clientes activos
--- dueño: Franco Pirez
+-- dueño: roberta
 -- descripcion: Clientes distintos con al menos una compra en el período.
 
 SELECT
