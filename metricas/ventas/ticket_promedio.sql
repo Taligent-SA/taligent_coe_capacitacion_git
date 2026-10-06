@@ -1,3 +1,4 @@
+-- Hotfix 1.0.2 - Lucas
 -- metrica: Ticket promedio
 -- dueño: equipo comercial
 -- descripcion: Facturación dividida por cantidad de comprobantes, por mes.
