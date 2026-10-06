@@ -8,3 +8,6 @@ SELECT
 FROM ventas.comprobantes
 WHERE anulado = 0
 GROUP BY periodo;
+
+
+-- nuevo comentario para agregar alguna linea nueva.
