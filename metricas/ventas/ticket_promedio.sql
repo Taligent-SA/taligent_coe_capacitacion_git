@@ -1,7 +1,6 @@
 -- metrica: Ticket promedio
 -- dueño: equipo comercial
--- descripcion: Facturación dividida por cantidad de comprobantes, por mes.
-
+-- descripcion: Facturación dividida por cantidad de comprobantes, mensualmente.
 SELECT
     periodo,
     SUM(importe_neto) / COUNT(DISTINCT comprobante) AS ticket_promedio
